@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives: 2020 | Hexo</title>
+  <title>java编程思想笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="chapter5-初始化与清理构造器概念在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。 因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。 构造器是一种特别的方法，没有返回值，但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java编程思想笔记">
+<meta property="og:url" content="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="chapter5-初始化与清理构造器概念在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。 因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。 构造器是一种特别的方法，没有返回值，但是">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-18T09:18:59.000Z">
+<meta property="article:modified_time" content="2020-08-18T12:11:31.285Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -62,154 +67,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  <time datetime="2020-08-23T09:33:31.000Z" itemprop="datePublished">Aug 23</time>
+        <section id="main"><article id="post-java编程思想笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-08-18T09:18:59.000Z" itemprop="datePublished">2020-08-18</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-抽象工厂模式</a>
+    <h1 class="article-title" itemprop="name">
+      java编程思想笔记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time datetime="2020-08-18T09:18:59.000Z" itemprop="datePublished">Aug 18</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/">java编程思想笔记</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  <time datetime="2020-08-17T06:13:40.000Z" itemprop="datePublished">Aug 17</time>
-</a>
+        <h2 id="chapter5-初始化与清理"><a href="#chapter5-初始化与清理" class="headerlink" title="chapter5-初始化与清理"></a>chapter5-初始化与清理</h2><h3 id="构造器概念"><a href="#构造器概念" class="headerlink" title="构造器概念"></a>构造器概念</h3><p>在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。</p>
+<p>因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。</p>
+<p>构造器是一种特别的方法，没有返回值，但是和void不一样，void本身是不会自动返回什么，但是可以选择让它返回别的东西，而构造器就不行。</p>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>方法重载可以让同一个名字的方法不起冲突，而且方法重载的返回值类型通常是相同的，但是要参数列表不同才可以使用。</p>
+<p>当方法重载里面的参数列表接收到的实参小于形参的话，实参就会提升，如果大于方法重载的形参就会转换类型。</p>
+<h2 id="chapter6-访问权限控制"><a href="#chapter6-访问权限控制" class="headerlink" title="chapter6-访问权限控制"></a>chapter6-访问权限控制</h2>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/17/docker%E5%85%A5%E9%97%A8/">docker入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  <time datetime="2020-08-13T05:16:08.000Z" itemprop="datePublished">Aug 13</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="cke6wlqev0005x8tsgfjk0ptj" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">hexo发布文章</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" class="archive-article-date">
-  <time datetime="2020-08-13T05:15:16.000Z" itemprop="datePublished">Aug 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/">win10家庭版安装docker</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" class="archive-article-date">
-  <time datetime="2020-08-12T02:16:22.000Z" itemprop="datePublished">Aug 12</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/">java注解(1)</a>
-    </h1>
+    <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式-抽象工厂模式
+        
+      </div>
+    </a>
   
+  
+    <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker入门</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/07/hello-world/" class="archive-article-date">
-  <time datetime="2020-08-07T06:46:29.073Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         

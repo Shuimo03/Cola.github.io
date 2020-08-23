@@ -64,6 +64,155 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-设计模式-抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2020-08-23T09:33:31.000Z" itemprop="datePublished">2020-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-抽象工厂模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="抽象工厂模式-Abstract-factory"><a href="#抽象工厂模式-Abstract-factory" class="headerlink" title="抽象工厂模式(Abstract-factory)"></a>抽象工厂模式(Abstract-factory)</h2><p><img src="https://alleniverson.gitbooks.io/design-pattern/content/assets/designpattern15.gif" alt="img"></p>
+<p><img src="https://refactoringguru.cn/images/patterns/diagrams/abstract-factory/example.png" alt="抽象工厂模式示例的类图"></p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>假设你正在经营一家电器商场，电器商场里面有各种各样的问题，用代码类来表示的话：</p>
+<ul>
+<li>一系列相关的产品，比如冰箱，洗衣机，电视等。</li>
+<li>系列不同的变体和品牌，比如海尔冰箱，索尼电视等</li>
+</ul>
+<p>你需要让每件电器单独生成对象，这样才能让风格保持一致，如果顾客买来发现风格不一样，可能就会不满意，另外也不希望添加新产品或者新的品牌的时候，修改现有代码，电器供应商如果对产品更新速度很快的话，你不会像每次更新都去修改关键代码。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>首先，抽象工厂模式建议为电器商场中所有的产品都声明接口，比如冰箱，洗衣机，电视等等，接着所有产品都继承这些接口，比如冰箱都实现冰箱接口等等。</p>
+<p>接着声明抽象工厂，包括系列中所有产品构造方法的接口，比如创建电视createTv等等，这些方法必须返回抽象产品类型，每个具体工厂类对应一个特定的产品变体，对于系列产品的每个变体，都基于抽象工厂接口创建不同的工厂类，每个工厂类只能返回特定的产品，比如索尼品牌的电器，只能创建索尼电视，索尼冰箱，索尼洗衣机等等。</p>
+<p>客户端代码可以通过相应的抽象接口来调用工厂和产品类，不需要改动实际客户端代码，就可以传递给客户端的工厂类，也能够修改客户端代码来接收产品变体，客户端不需要了解所调用工厂的具体类信息。</p>
+<h3 id="抽象工厂结构"><a href="#抽象工厂结构" class="headerlink" title="抽象工厂结构"></a>抽象工厂结构</h3><p><img src="https://refactoringguru.cn/images/patterns/diagrams/abstract-factory/structure-indexed.png" alt="抽象工厂设计模式"></p>
+<ol>
+<li>抽象产品：为构成系列产品的一组不同但是相关的产品声明接口</li>
+<li>具体产品：是抽象产品的多种不同类型实现，所有变体都必须实现相应的抽象产品。</li>
+<li>抽象工厂：接口声明一组创建各种抽象产品的方法。</li>
+<li>具体工厂：实现抽象工厂的构建方法，每个具体工厂对应特定产品变体，并且仅创建这种产品的而变体。</li>
+</ol>
+<h3 id="抽象工厂模式的优缺点"><a href="#抽象工厂模式的优缺点" class="headerlink" title="抽象工厂模式的优缺点"></a>抽象工厂模式的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>可以确保统一工厂生成的产品相互匹配</li>
+<li>可以避免客户端和具体产品代码的耦合</li>
+<li>单一职责原则，可以将产品生成代码抽取到同一位置，让代码更加容易维护。</li>
+<li>开闭原则，向应用程序中引入新的产品变体时，不需要改变客户端代码</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>因为采用该模式需要引入更多的接口和类，所以代码会更加复杂。</p>
+<h3 id="抽象工厂的应用场景"><a href="#抽象工厂的应用场景" class="headerlink" title="抽象工厂的应用场景"></a>抽象工厂的应用场景</h3><p>如果代码需要和多个不同系列的相关产品交互，但是因为没办法提前获取相关信息，或者处于对未来扩张性的考虑，不希望代码基于产品类进行构造，所以在这种情况下，就可以使用抽象工厂。</p>
+<p>抽象工厂提供了一个接口，可以创建每个系列产品的对象，只需要代码通过这个结构创建对象，那么就不会生成和应用程序已经生成的产品类型不一样的产品。</p>
+<p>假设有一个基于一组抽象方法的类，并且主要功能还变得不明确，就可以考虑使用抽象工厂模式，在设计良好的程序当中，每个类仅仅复制一件事，如果一个类需要和多种类型产品交互，就可以考虑工厂方法抽取到独立的工厂类或者具备完整功能的抽象工厂类中。</p>
+<h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h2><p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/abstract-factory">https://refactoringguru.cn/design-patterns/abstract-factory</a></p>
+<p><a target="_blank" rel="noopener" href="https://alleniverson.gitbooks.io/design-pattern/content/design-pattern/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">https://alleniverson.gitbooks.io/design-pattern/content/design-pattern/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" data-id="cke6wlqey0009x8tsb0p55ptr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java编程思想笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-08-18T09:18:59.000Z" itemprop="datePublished">2020-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/">java编程思想笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="chapter5-初始化与清理"><a href="#chapter5-初始化与清理" class="headerlink" title="chapter5-初始化与清理"></a>chapter5-初始化与清理</h2><h3 id="构造器概念"><a href="#构造器概念" class="headerlink" title="构造器概念"></a>构造器概念</h3><p>在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。</p>
+<p>因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。</p>
+<p>构造器是一种特别的方法，没有返回值，但是和void不一样，void本身是不会自动返回什么，但是可以选择让它返回别的东西，而构造器就不行。</p>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>方法重载可以让同一个名字的方法不起冲突，而且方法重载的返回值类型通常是相同的，但是要参数列表不同才可以使用。</p>
+<p>当方法重载里面的参数列表接收到的实参小于形参的话，实参就会提升，如果大于方法重载的形参就会转换类型。</p>
+<h2 id="chapter6-访问权限控制"><a href="#chapter6-访问权限控制" class="headerlink" title="chapter6-访问权限控制"></a>chapter6-访问权限控制</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="cke6wlqev0005x8tsgfjk0ptj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-08-17T06:13:40.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/docker%E5%85%A5%E9%97%A8/">docker入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="docker简介"><a href="#docker简介" class="headerlink" title="docker简介"></a>docker简介</h1><h1 id="docker和虚拟机的区别"><a href="#docker和虚拟机的区别" class="headerlink" title="docker和虚拟机的区别"></a>docker和虚拟机的区别</h1><h1 id="docker三大组件"><a href="#docker三大组件" class="headerlink" title="docker三大组件"></a>docker三大组件</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/" data-id="cke6wlqej0000x8ts4xg6air7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo发布文章" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="article-date">
@@ -97,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="ckdsd22i80001jctsbbl1f5vc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="cke6wlqet0003x8ts0rge0wyl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li></ul>
@@ -147,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" data-id="ckdsd22ie0005jcts24g50oha" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" data-id="cke6wlqex0008x8tsgsq3dx99" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
@@ -215,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckdsd22ia0002jctscsrvfnqq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="cke6wlqeu0004x8tse30f8g6y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
@@ -266,43 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckdsd22i20000jctseshw6gux" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/test/" class="article-date">
-  <time datetime="2020-08-07T06:39:44.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/test/" data-id="ckdsd22id0004jctsfmnzfqqa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="cke6wlqep0001x8tsemjc0051" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +438,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -335,7 +448,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -357,23 +470,23 @@
       <ul>
         
           <li>
+            <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-抽象工厂模式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/">java编程思想笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/">docker入门</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">hexo发布文章</a>
           </li>
         
           <li>
             <a href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/">win10家庭版安装docker</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/">java注解(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/test/">test</a>
           </li>
         
       </ul>
