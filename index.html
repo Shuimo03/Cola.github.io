@@ -64,6 +64,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-WSL开发环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2020-09-02T06:40:31.000Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">WSL开发环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="软件列表"><a href="#软件列表" class="headerlink" title="软件列表"></a>软件列表</h2><ol>
+<li>golang</li>
+<li>scrapy</li>
+</ol>
+<h2 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h2><p>因为某些特殊原因，需要使用代理才能下载，所以可以现在宿主机下载好以后，在从wsl2中复制过去，具体步骤就不写了，当然，如果你已经能够使用代理了，就可以使用如下命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>如果没有代理就要输入这些命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br></pre></td></tr></table></figure>
+
+<p>当把安装包移动到指定目录的时候，就可以开始配置golang开发环境了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>最后运行 ~/.bashrc，为了确认有没有安装成功，输入go version，如果出现版本号，就说明安装成功了。</p>
+<h2 id="安装scrapy"><a href="#安装scrapy" class="headerlink" title="安装scrapy"></a>安装scrapy</h2><p>首先要安装pip3或者pip，这里讲下怎么安装pip3，输入命令</p>
+<p> <strong><code>sudo apt-get install python3-pip</code></strong></p>
+<p>安装好后，接着输入以下命令</p>
+<ol>
+<li>sudo apt-get install python-dev</li>
+<li>sudo pip install scrapy</li>
+</ol>
+<p>最后等进度条跑完就行了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>完全可以当作Ubuntu来用，包括安装软件。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckel1inwx000118ts30j1dek6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-WSL2使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" class="article-date">
@@ -132,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" data-id="ckejqs0i60003msts1mu0fv41" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" data-id="ckel1inwt000018ts9cirb07o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
@@ -178,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%87%AA%E5%AD%A6%E6%96%B9%E6%B3%95(1)/" data-id="ckejqs0ic000bmstscrki4m5y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%87%AA%E5%AD%A6%E6%96%B9%E6%B3%95(1)/" data-id="ckel1inx5000d18ts19bx56oj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -246,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" data-id="ckejqs0id000dmsts7b827v7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" data-id="ckel1inx7000f18tsfbk1hwgo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
@@ -289,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="ckejqs0ia0008msts00lgb3h1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="ckel1inx5000c18ts9xjeeolz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
@@ -327,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/" data-id="ckejqs0hw0000msts1oez62j0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/" data-id="ckel1inwz000318ts5i705xag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
@@ -372,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="ckejqs0i70004msts0xjj5w67" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="ckel1inx1000518ts6khwf5ru" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li></ul>
@@ -422,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" data-id="ckejqs0ib0009msts8w0c4nev" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" data-id="ckel1inx4000918ts1c8r0s4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
@@ -490,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckejqs0i80005msts40ac0n6o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckel1inx3000818ts72vd9wjf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
@@ -541,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckejqs0i20001msts7wagg9hw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckel1inx0000418ts81k09n9l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +635,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">开发环境</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 20px;">开发环境</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -583,7 +644,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -594,6 +655,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">WSL开发环境搭建</a>
+          </li>
         
           <li>
             <a href="/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/">WSL2开发配置</a>
@@ -609,10 +674,6 @@
         
           <li>
             <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/">java编程思想笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/">docker入门</a>
           </li>
         
       </ul>

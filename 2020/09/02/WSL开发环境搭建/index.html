@@ -5,19 +5,19 @@
   
 
   
-  <title>docker入门 | Hexo</title>
+  <title>WSL开发环境搭建 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="docker简介docker和虚拟机的区别docker三大组件">
+  <meta name="description" content="软件列表 golang scrapy  golang因为某些特殊原因，需要使用代理才能下载，所以可以现在宿主机下载好以后，在从wsl2中复制过去，具体步骤就不写了，当然，如果你已经能够使用代理了，就可以使用如下命令。 1234567wget https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.14.2.linux-amd64.tar.gzsudo ta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker入门">
-<meta property="og:url" content="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="WSL开发环境搭建">
+<meta property="og:url" content="http://yoursite.com/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="docker简介docker和虚拟机的区别docker三大组件">
+<meta property="og:description" content="软件列表 golang scrapy  golang因为某些特殊原因，需要使用代理才能下载，所以可以现在宿主机下载好以后，在从wsl2中复制过去，具体步骤就不写了，当然，如果你已经能够使用代理了，就可以使用如下命令。 1234567wget https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.14.2.linux-amd64.tar.gzsudo ta">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-17T06:13:40.000Z">
-<meta property="article:modified_time" content="2020-08-18T01:44:52.435Z">
+<meta property="article:published_time" content="2020-09-02T06:40:31.000Z">
+<meta property="article:modified_time" content="2020-09-02T07:09:09.547Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="docker基础">
+<meta property="article:tag" content="开发环境">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-docker入门" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-WSL开发环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" class="article-date">
-  <time datetime="2020-08-17T06:13:40.000Z" itemprop="datePublished">2020-08-17</time>
+    <a href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2020-09-02T06:40:31.000Z" itemprop="datePublished">2020-09-02</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      docker入门
+      WSL开发环境搭建
     </h1>
   
 
@@ -89,14 +89,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="docker简介"><a href="#docker简介" class="headerlink" title="docker简介"></a>docker简介</h1><h1 id="docker和虚拟机的区别"><a href="#docker和虚拟机的区别" class="headerlink" title="docker和虚拟机的区别"></a>docker和虚拟机的区别</h1><h1 id="docker三大组件"><a href="#docker三大组件" class="headerlink" title="docker三大组件"></a>docker三大组件</h1>
+        <h2 id="软件列表"><a href="#软件列表" class="headerlink" title="软件列表"></a>软件列表</h2><ol>
+<li>golang</li>
+<li>scrapy</li>
+</ol>
+<h2 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h2><p>因为某些特殊原因，需要使用代理才能下载，所以可以现在宿主机下载好以后，在从wsl2中复制过去，具体步骤就不写了，当然，如果你已经能够使用代理了，就可以使用如下命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>如果没有代理就要输入这些命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br></pre></td></tr></table></figure>
+
+<p>当把安装包移动到指定目录的时候，就可以开始配置golang开发环境了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>最后运行 ~/.bashrc，为了确认有没有安装成功，输入go version，如果出现版本号，就说明安装成功了。</p>
+<h2 id="安装scrapy"><a href="#安装scrapy" class="headerlink" title="安装scrapy"></a>安装scrapy</h2><p>首先要安装pip3或者pip，这里讲下怎么安装pip3，输入命令</p>
+<p> <strong><code>sudo apt-get install python3-pip</code></strong></p>
+<p>安装好后，接着输入以下命令</p>
+<ol>
+<li>sudo apt-get install python-dev</li>
+<li>sudo pip install scrapy</li>
+</ol>
+<p>最后等进度条跑完就行了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>完全可以当作Ubuntu来用，包括安装软件。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/" data-id="ckel1inwz000318ts5i705xag" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckel1inwx000118ts30j1dek6" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
 
     </footer>
   </div>
@@ -104,19 +127,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java编程思想笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">hexo发布文章</div>
+      <div class="article-nav-title">WSL2开发配置</div>
     </a>
   
 </nav>
