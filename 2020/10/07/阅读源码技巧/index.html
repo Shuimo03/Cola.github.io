@@ -5,18 +5,19 @@
   
 
   
-  <title>Hello World | Hexo</title>
+  <title>阅读源码技巧 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="如果实在github(或者类似的)上拉取的开源代码，就从第一个commit开始读，从第一个commit开始读的好处在于  学习别人从零开始建立项目的步骤。 一个项目从零到使用，有很多代码是为了解决bug而写，这些代码对于核心逻辑来说是一种干扰。  针对大型项目代码较多，流程算法比较复杂，就需要遵守如下几个原则：  先设计在代码，先了解设计和基本概念再下手写代码，比如MySQL的代码，先对它的架构设">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/08/07/hello-world/index.html">
+<meta property="og:title" content="阅读源码技巧">
+<meta property="og:url" content="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="如果实在github(或者类似的)上拉取的开源代码，就从第一个commit开始读，从第一个commit开始读的好处在于  学习别人从零开始建立项目的步骤。 一个项目从零到使用，有很多代码是为了解决bug而写，这些代码对于核心逻辑来说是一种干扰。  针对大型项目代码较多，流程算法比较复杂，就需要遵守如下几个原则：  先设计在代码，先了解设计和基本概念再下手写代码，比如MySQL的代码，先对它的架构设">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-07T06:46:29.073Z">
-<meta property="article:modified_time" content="2020-08-07T06:46:29.073Z">
+<meta property="article:published_time" content="2020-10-07T03:42:33.000Z">
+<meta property="article:modified_time" content="2020-10-07T03:53:09.480Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机学习">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -66,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-阅读源码技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T06:46:29.073Z" itemprop="datePublished">2020-08-07</time>
+    <a href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-10-07T03:42:33.000Z" itemprop="datePublished">2020-10-07</time>
 </a>
     
   </div>
@@ -80,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      阅读源码技巧
     </h1>
   
 
@@ -88,41 +89,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>如果实在github(或者类似的)上拉取的开源代码，就从第一个commit开始读，从第一个commit开始读的好处在于</p>
+<ul>
+<li>学习别人从零开始建立项目的步骤。</li>
+<li>一个项目从零到使用，有很多代码是为了解决bug而写，这些代码对于核心逻辑来说是一种干扰。</li>
+</ul>
+<p>针对大型项目代码较多，流程算法比较复杂，就需要遵守如下几个原则：</p>
+<ul>
+<li>先设计在代码，先了解设计和基本概念再下手写代码，比如MySQL的代码，先对它的架构设计有初步了解，有sql和存储，支持多存储引擎，理解线程模型和数据库基本概念。</li>
+<li>由粗到细，大型项目一般是由多个子项目组成，每个子项目完成自己独立的功能，一个子项目又由多个模块组成，每个模块会有多个类，第一阶段只需要了解每个模块和类的大概作用就行。</li>
+<li>由外到内，看实现的对外接口，从这些接口作为切入点，把整个开发流程搞透，并且晓得关键算法在哪实现。</li>
+<li>熟悉套路。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckfyuyy810008nstsgv7ngn3o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" data-id="ckfyuyy8j0015nsts0cdr0ybj" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java注解(1)
-        
-      </div>
-    </a>
   
+    <a href="/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机书籍阅读方法</div>
+    </a>
   
 </nav>
 
