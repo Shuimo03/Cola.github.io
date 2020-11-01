@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-关于如何实现一个数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-11-01T08:39:29.000Z" itemprop="datePublished">2020-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/">关于如何实现一个数据库-绪论</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p>算是一个新坑吧，这个学期开了数据库原理的课程，抱着开什么课造什么轮子，以及烂尾的心态去写一个数据库，一开始在知乎上找了几个回答，链接下面</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></p>
+<p>其中张原嘉答主的很不错，一开始我的路子走错了，我直接去看了tidb的源码，模仿他们的parser，这一步其实还好，编写sql语法规则，关键在于，添加了很多无用功在里面，然后一些基础的功能没有去实现，所以中间浪费了好多时间，不过后期也晓得如何去抄去模仿项目的代码。</p>
+<p>如果时间回到最早开始写数据库，我想我应该还是会去看tidb的parser，但是不会在对着抄，而是挑选一些简单部分去实现，然后再去做索引结构。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://pingcap.com/blog-cn/tidb-source-code-reading-5/">https://pingcap.com/blog-cn/tidb-source-code-reading-5/</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></li>
+<li>《数据库系统实现》</li>
+<li>《数据库系统与概念》</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckgyy9ycv000jwotsfb2zfmz8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-最近一些总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" class="article-date">
@@ -93,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" data-id="ckgi2a8a8000ox8ts4bbn08df" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" data-id="ckgyy9ycy000pwotshg903sjv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li></ul>
@@ -143,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" data-id="ckgi2a8ad000zx8ts1fvl0gc5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" data-id="ckgyy9yd20011wots2xxigoj1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -193,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" data-id="ckgi2a8aa000sx8tscemg4gzz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" data-id="ckgyy9ycz000twots3lkg5nqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -236,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/02/%E5%AE%9E%E7%8E%B0%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95%E6%96%B9%E6%B3%95/" data-id="ckgi2a8a7000mx8ts6vcv4gzn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/10/02/%E5%AE%9E%E7%8E%B0%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95%E6%96%B9%E6%B3%95/" data-id="ckgyy9ycx000nwots5fouabcv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -274,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AF%87/" data-id="ckgi2a8aa000ux8ts1w09h305" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AF%87/" data-id="ckgyy9yd0000uwots4rc9agjo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/21/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%92%8C%E6%A8%A1%E4%BB%BF%E5%88%AB%E4%BA%BA%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/" data-id="ckgi2a8a6000kx8tsc0h411m6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/21/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%92%8C%E6%A8%A1%E4%BB%BF%E5%88%AB%E4%BA%BA%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/" data-id="ckgyy9ycw000lwotsa2cp6rkq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/14/CS106L%E8%AF%BE%E7%A8%8B%E9%85%8D%E7%BD%AE/" data-id="ckgi2a89v0005x8ts9tg78254" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/14/CS106L%E8%AF%BE%E7%A8%8B%E9%85%8D%E7%BD%AE/" data-id="ckgyy9ycd0000wotsh9p3am7v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li></ul>
@@ -445,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/11/%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95/" data-id="ckgi2a8a9000qx8ts0sno9vnd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/11/%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95/" data-id="ckgyy9ycy000rwots59xmba3l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -511,52 +559,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/06/WSL%E4%B8%AD%E5%AE%89%E8%A3%85MySQL/" data-id="ckgi2a89q0001x8tseb3bcx5c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/09/06/WSL%E4%B8%AD%E5%AE%89%E8%A3%85MySQL/" data-id="ckgyy9yck0003wots8arfcosr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于公开课的一些想法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/03/%E5%85%B3%E4%BA%8E%E5%85%AC%E5%BC%80%E8%AF%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" class="article-date">
-  <time datetime="2020-09-03T07:42:03.000Z" itemprop="datePublished">2020-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/03/%E5%85%B3%E4%BA%8E%E5%85%AC%E5%BC%80%E8%AF%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">关于公开课的一些想法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    如果上比较新的公开课，一般是没有中文字幕的，如果你和我一样，英语特别烂，又像看国外的公开课，就可以去对应的课程频道，下载英文字幕，然后使用彩云小译的视频字幕翻译，因为是机翻，所以看起来特别难受，但是问题不大，毕竟除了视频还有ppt和中文资料…</p>
-<p>不过看多了，就大概明白讲什么了，里面的一些重点可以先记下来，等课后再去补充，比如今天看了Missing Semester IAP 2020的lecture 8，关于CI system的，你可以先把这个概念记下来，等全部看完了，再去补充，当然你想看到一半再去查也可以，但是感觉连贯性就被打断了。</p>
-<p>如果想跟上公开课的节奏，花的时间是要比看公开课的时间要多的，首先你要提前预习，如果有ppt或者note，要先看note，然后再看一些相关的资料，这样上课才看得懂。</p>
-<p>课后的练习也很重要。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/03/%E5%85%B3%E4%BA%8E%E5%85%AC%E5%BC%80%E8%AF%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" data-id="ckgi2a8a4000hx8tsbuwn7uav" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
 
     </footer>
   </div>
@@ -569,7 +575,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -583,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -593,7 +599,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 13.33px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 13.33px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 16.67px;">开发环境</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 13.33px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 13.33px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 16.67px;">开发环境</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -602,7 +608,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -613,6 +619,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/">关于如何实现一个数据库-绪论</a>
+          </li>
         
           <li>
             <a href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/">最近一些总结</a>
@@ -628,10 +638,6 @@
         
           <li>
             <a href="/2020/10/02/%E5%AE%9E%E7%8E%B0%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95%E6%96%B9%E6%B3%95/">实现论文中的算法方法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AF%87/">计算机学习篇</a>
           </li>
         
       </ul>

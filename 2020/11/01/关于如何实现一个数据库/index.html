@@ -5,19 +5,19 @@
   
 
   
-  <title>计算机书籍阅读方法 | Hexo</title>
+  <title>关于如何实现一个数据库-绪论 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前在金老师的live中听过关于如何阅读计算机书籍的方法，但是之前做的笔记不见了，所以这次重新写过。金老师在live中有一张PPT，上面将看书一共分为五个阶段，分别如下  预热阶段 第一遍 第二遍 第三遍 第四遍以及更多  预热阶段是先构造整体知识结构，同时确定阅读顺序和具体学习路线，这个方法的好处在于，你可以看其中的重点部分，不用全部啃完一本大头书，这个阶段主要目标是确定要学那些章节，对一本书或">
+  <meta name="description" content="绪论算是一个新坑吧，这个学期开了数据库原理的课程，抱着开什么课造什么轮子，以及烂尾的心态去写一个数据库，一开始在知乎上找了几个回答，链接下面 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;35382593&#x2F;answer&#x2F;102269843 其中张原嘉答主的很不错，一开始我的路子走错了，我直接去看了tidb的源码，模仿他们的parser，这一步其实还好，编写sql语法规则，关键在于，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机书籍阅读方法">
-<meta property="og:url" content="http://yoursite.com/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="关于如何实现一个数据库-绪论">
+<meta property="og:url" content="http://yoursite.com/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="之前在金老师的live中听过关于如何阅读计算机书籍的方法，但是之前做的笔记不见了，所以这次重新写过。金老师在live中有一张PPT，上面将看书一共分为五个阶段，分别如下  预热阶段 第一遍 第二遍 第三遍 第四遍以及更多  预热阶段是先构造整体知识结构，同时确定阅读顺序和具体学习路线，这个方法的好处在于，你可以看其中的重点部分，不用全部啃完一本大头书，这个阶段主要目标是确定要学那些章节，对一本书或">
+<meta property="og:description" content="绪论算是一个新坑吧，这个学期开了数据库原理的课程，抱着开什么课造什么轮子，以及烂尾的心态去写一个数据库，一开始在知乎上找了几个回答，链接下面 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;35382593&#x2F;answer&#x2F;102269843 其中张原嘉答主的很不错，一开始我的路子走错了，我直接去看了tidb的源码，模仿他们的parser，这一步其实还好，编写sql语法规则，关键在于，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-04T07:52:41.000Z">
-<meta property="article:modified_time" content="2020-10-04T08:15:25.327Z">
+<meta property="article:published_time" content="2020-11-01T08:39:29.000Z">
+<meta property="article:modified_time" content="2020-11-01T09:15:14.632Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="计算机学习">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-计算机书籍阅读方法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-关于如何实现一个数据库" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2020-10-04T07:52:41.000Z" itemprop="datePublished">2020-10-04</time>
+    <a href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-11-01T08:39:29.000Z" itemprop="datePublished">2020-11-01</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      计算机书籍阅读方法
+      关于如何实现一个数据库-绪论
     </h1>
   
 
@@ -89,26 +89,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前在金老师的live中听过关于如何阅读计算机书籍的方法，但是之前做的笔记不见了，所以这次重新写过。<br>金老师在live中有一张PPT，上面将看书一共分为五个阶段，分别如下</p>
-<ul>
-<li>预热阶段</li>
-<li>第一遍</li>
-<li>第二遍</li>
-<li>第三遍</li>
-<li>第四遍以及更多</li>
+        <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p>算是一个新坑吧，这个学期开了数据库原理的课程，抱着开什么课造什么轮子，以及烂尾的心态去写一个数据库，一开始在知乎上找了几个回答，链接下面</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></p>
+<p>其中张原嘉答主的很不错，一开始我的路子走错了，我直接去看了tidb的源码，模仿他们的parser，这一步其实还好，编写sql语法规则，关键在于，添加了很多无用功在里面，然后一些基础的功能没有去实现，所以中间浪费了好多时间，不过后期也晓得如何去抄去模仿项目的代码。</p>
+<p>如果时间回到最早开始写数据库，我想我应该还是会去看tidb的parser，但是不会在对着抄，而是挑选一些简单部分去实现，然后再去做索引结构。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://pingcap.com/blog-cn/tidb-source-code-reading-5/">https://pingcap.com/blog-cn/tidb-source-code-reading-5/</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></li>
+<li>《数据库系统实现》</li>
+<li>《数据库系统与概念》</li>
 </ul>
-<p>预热阶段是先构造整体知识结构，同时确定阅读顺序和具体学习路线，这个方法的好处在于，你可以看其中的重点部分，不用全部啃完一本大头书，<br>这个阶段主要目标是确定要学那些章节，对一本书或者这本书的技术有一个大概认知。</p>
-<p>第一遍仔细阅读第一章，快速的浏览一章的开头和结尾，跳过中间，因为中间部分会在结尾处，进行一个总结，所以中间可以选择性跳读，等到了第二遍在进行补充，<br>第二遍的时候，主要是对第一遍跳读的部分或者不懂的地方进行细读，同时也挑出最感兴趣的部分进行细读，如果不同的话，可以先留着。<br>到了第三遍就是对第一第二遍整体的复盘了，把没有看懂的弄懂。<br>第四遍以及更多遍则是通读全书，完成书上练习题，进行巩固。</p>
-<h3 id="阅读细节"><a href="#阅读细节" class="headerlink" title="阅读细节"></a>阅读细节</h3><p>如果是编程书的话，要分为两种情况，如果是之前没有接触过编程的话，还是要动手写书上的代码，而有编程经验的话，则需要跟上作者的思路，有课后习题，则要通过<br>课后习题来完成语法学习，在第一遍过程中，只需要看完预热阶段安排的章节即可，不需要全部看完，在第二遍中，选择性的敲书上代码，因为这个时候，就晓得书上代码讲的是什么了<br>在理解代码的情况下，可以有助于记忆语法。到了第三遍，语法和这门编程语言的概念已经掌握了，所以就可以动手做一些项目了。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>在学习中实践，在实践中学习，看书的过程中，遇到不懂的点可以记下来，或者找类似的书去看，不要做抄书式笔记，只需要把不懂的点和重点记录下来即可。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" data-id="ckgyy9ycz000twots3lkg5nqv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckgyy9ycv000jwotsfb2zfmz8" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -116,19 +114,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          阅读源码技巧
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/02/%E5%AE%9E%E7%8E%B0%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">实现论文中的算法方法</div>
+      <div class="article-nav-title">最近一些总结</div>
     </a>
   
 </nav>
