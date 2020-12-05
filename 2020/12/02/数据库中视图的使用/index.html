@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>数据库中视图的使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="视图原理视图属于一种虚表，通过一张或多张基表根据查询语句而产生的结果组成，因为视图是虚表的原因，所以在存储时，只会存储视图定义，而没有存储对应的数据，视图的语法如下： 123456789101112CREATE [ OR ALTER ] VIEW [ schema_name . ] view_name [ (column [ ,...n ] ) ][ WITH &lt;view_attribute">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库中视图的使用">
+<meta property="og:url" content="http://yoursite.com/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="视图原理视图属于一种虚表，通过一张或多张基表根据查询语句而产生的结果组成，因为视图是虚表的原因，所以在存储时，只会存储视图定义，而没有存储对应的数据，视图的语法如下： 123456789101112CREATE [ OR ALTER ] VIEW [ schema_name . ] view_name [ (column [ ,...n ] ) ][ WITH &lt;view_attribute">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-02T01:24:44.000Z">
+<meta property="article:modified_time" content="2020-12-05T04:14:55.261Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-数据库中视图的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2020-12-02T01:24:44.000Z" itemprop="datePublished">2020-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库中视图的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="视图原理"><a href="#视图原理" class="headerlink" title="视图原理"></a>视图原理</h3><p>视图属于一种虚表，通过一张或多张基表根据查询语句而产生的结果组成，因为视图是虚表的原因，所以在存储时，只会存储视图定义，而没有存储对应的数据，视图的语法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [ <span class="keyword">OR</span> <span class="keyword">ALTER</span> ] <span class="keyword">VIEW</span> [ schema_name . ] view_name [ (<span class="keyword">column</span> [ ,...n ] ) ]</span><br><span class="line">[ <span class="keyword">WITH</span> &lt;view_attribute&gt; [ ,...n ] ]</span><br><span class="line"><span class="keyword">AS</span> select_statement</span><br><span class="line">[ <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">OPTION</span> ]</span><br><span class="line">[ ; ]  </span><br><span class="line">  </span><br><span class="line">&lt;view_attribute&gt; ::=</span><br><span class="line">&#123;  </span><br><span class="line">    [ ENCRYPTION ]  </span><br><span class="line">    [ SCHEMABINDING ]  </span><br><span class="line">    [ VIEW_METADATA ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>创建表结构和例子</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--- 创建表结构</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> supplier(</span><br><span class="line">    supplierID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    supplierName <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    supplierAddress <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S3&#x27;</span>,<span class="string">&#x27;振华电子厂&#x27;</span>,<span class="string">&#x27;西安&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S4&#x27;</span>,<span class="string">&#x27;华通电子公司&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S6&#x27;</span>,<span class="string">&#x27;607厂&#x27;</span>,<span class="string">&#x27;郑州&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S7&#x27;</span>,<span class="string">&#x27;振华电子厂&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span> (<span class="keyword">DISTINCT</span> supplier.supplierAddress) <span class="keyword">FROM</span> dbo.supplier <span class="comment">--第一题-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">store</span>(</span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeEID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>, <span class="comment">--职工编号</span></span><br><span class="line">    storeSalary <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E1&#x27;</span>,<span class="number">1220</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E3&#x27;</span>,<span class="number">1210</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E4&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;E6&#x27;</span>,<span class="number">1230</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E7&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(store.storeSalary)  <span class="keyword">FROM</span> dbo.store <span class="comment">--第二题-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employee(</span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    employeeEID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>, <span class="comment">--职工编号</span></span><br><span class="line">    employeeSalary <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SHstore(</span><br><span class="line"></span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeCITY <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeArea <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">--仓库</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>,<span class="number">370</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>,<span class="number">500</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;广州&#x27;</span>,<span class="number">200</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH4&#x27;</span>,<span class="string">&#x27;武汉&#x27;</span>,<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--职工</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E1&#x27;</span>,<span class="number">1220</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E3&#x27;</span>,<span class="number">1210</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E4&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;E6&#x27;</span>,<span class="number">1230</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E7&#x27;</span>,<span class="number">1250</span>)</span><br></pre></td></tr></table></figure>
+
+<p>创建视图，视图名不能和表名一致，并且视图名唯一。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> employeeView <span class="keyword">AS</span> <span class="keyword">select</span> storeID,employeeEID <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+
+<p>如果是通过查询一张基表结果组成的视图，那么可以对它进行insert,update,delete，但是如果是多基表就不可以进行insert和delete，因为修改会影响多个基表。</p>
+<h3 id="视图支持的操作"><a href="#视图支持的操作" class="headerlink" title="视图支持的操作"></a>视图支持的操作</h3><p>如果是单基表查询的视图，支持insert/update/delete，而多基表的情况下，只支持update。</p>
+<h3 id="视图的优点"><a href="#视图的优点" class="headerlink" title="视图的优点"></a>视图的优点</h3><ol>
+<li>简单</li>
+<li>安全</li>
+<li>数据独立</li>
+</ol>
+<p>使用视图的大部分情况下是为了保障数据安全性，提高查询效率。</p>
+<h3 id="视图的缺点"><a href="#视图的缺点" class="headerlink" title="视图的缺点"></a>视图的缺点</h3><ol>
+<li>性能较差</li>
+<li>修改受到限制</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckib6pogn0003p4tsdhrgh5ak" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue创建typescript项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">触发器和存储过程的使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/">vue创建typescript项目</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">数据库中视图的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/">触发器和存储过程的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/">vue-cli3安装</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/24/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97chapter1/">Java多线程编程实战指南chapter1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
