@@ -64,6 +64,174 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-操作系统chapter1笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fchapter1%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-11-05T11:24:27.000Z" itemprop="datePublished">2020-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fchapter1%E7%AC%94%E8%AE%B0/">操作系统chapter1笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="王道考研计算机chapter1"><a href="#王道考研计算机chapter1" class="headerlink" title="王道考研计算机chapter1"></a>王道考研计算机chapter1</h2><p>计算机系统自下而上可以分为四个部分</p>
+<ol>
+<li>硬件</li>
+<li>操作系统</li>
+<li>应用程序</li>
+<li>用户</li>
+</ol>
+<p>操作系统系统管理各种计算机硬件，为应用程序提供基础，充当用户和硬件之间的中间件。</p>
+<h3 id="操作系统的特征"><a href="#操作系统的特征" class="headerlink" title="操作系统的特征"></a>操作系统的特征</h3><p>操作系统系统属于一种特殊的系统软件。</p>
+<ol>
+<li>并发:并发是指两个或者多个事件在同一时间间隔内发生，而操作系统的并发性是指计算机系统中同时存在多个运行程序。</li>
+<li>共享:是指操作系统中资源可供内存中多个并发执行的进程使用，共享分为两种:互斥共享和同时访问。</li>
+<li>虚拟:虚拟是把一个物理上的实体变化为诺干逻辑上的对应物，物理实体是现实的，而后者是虚拟的，是用户感觉上的事物，用于实现虚拟的技术，称为虚拟技术，比如虚拟处理器和虚拟内存等。 </li>
+<li>异步:多道程序环境允许多个程序并发执行，但是由于资源有限，所以进程的执行并不是一贯到底的，以不可预知的速度向前推荐。</li>
+</ol>
+<p>并发和共享是操作系统两个最基本的特征，两者之间相互为存在条件:</p>
+<ol>
+<li>资源共享是以程序的并发为条件的，如果系统不允许程序并发执行，就不会存在资源共享问题。</li>
+<li>如果系统不能对资源共享施加有效管理，就会影响到程序的并发执行，甚至根本无法并发执行。</li>
+</ol>
+<h3 id="操作系统的目标和功能"><a href="#操作系统的目标和功能" class="headerlink" title="操作系统的目标和功能"></a>操作系统的目标和功能</h3><ol>
+<li>处理机管理:处理机的分配和运行都是以进程或者线程为基本单位，所以对处理器的管理可以看成对进程的管理，进程的管理涉及以下内容<ol>
+<li>进程创建</li>
+<li>进程撤销</li>
+<li>进程控制</li>
+<li>进程同步</li>
+<li>进程通信</li>
+<li>死锁处理</li>
+<li>处理机调度</li>
+</ol>
+</li>
+<li>存储器管理<ol>
+<li>内存分配与回收</li>
+<li>地址映射</li>
+<li>内存保护</li>
+<li>内存共享和内存扩充等</li>
+</ol>
+</li>
+<li>设备管理</li>
+<li>文件管理<ol>
+<li>文件存储空间管理</li>
+<li>目录管理</li>
+<li>文件读写管理和保护等</li>
+</ol>
+</li>
+</ol>
+<p>操作系统作为用户与计算机硬件系统之间的接口，有两类接口:</p>
+<ol>
+<li>命令接口<ol>
+<li>联机命令接口:适用于分时或者实时系统。</li>
+<li>脱机命令接口:适用于批处理系统。</li>
+</ol>
+</li>
+<li>程序接口</li>
+</ol>
+<h3 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h3><ol>
+<li>手工操作阶段(没有操作系统)</li>
+<li>批处理阶段(操作系统出现)<ol>
+<li>单道批处理系统:系统对作业的处理是成批进行的，但是内存中始终保持一道作业，单道批处理系统是在解决人机矛盾以及CPU和I/O设备速率不匹配的矛盾中形成的，特征如下<ol>
+<li>自动性</li>
+<li>顺序性</li>
+<li>单道性</li>
+</ol>
+</li>
+<li>多道批处理系统:多道程序设计技术允许多个程序同时进入到内存中并允许它们在CPU中交替运行，这些程序共享系统中的各种硬软件资源，特点如下<ol>
+<li>多道</li>
+<li>宏观上并行</li>
+<li>微观上串行</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>分时操作系统<ol>
+<li>同时性(多路性)</li>
+<li>交互性</li>
+<li>独立性</li>
+<li>及时性</li>
+</ol>
+</li>
+<li>实时操作系统<ol>
+<li>硬实时操作系统</li>
+<li>软实时操作系统</li>
+</ol>
+</li>
+<li>网络操作系统</li>
+<li>分布式计算机系统</li>
+<li>个人系统</li>
+</ol>
+<p>多道程序设计技术的解决如下问题:</p>
+<ol>
+<li>如何分配处理器</li>
+<li>多道程序的内存分配问题</li>
+<li>I/O设备如何分配</li>
+<li>如何组织和存放大量的程序和数据，以方便用户使用并保证其安全性与一致性。</li>
+</ol>
+<h3 id="操作系统的运行环境"><a href="#操作系统的运行环境" class="headerlink" title="操作系统的运行环境"></a>操作系统的运行环境</h3><ul>
+<li>用户态</li>
+<li>内核态</li>
+</ul>
+<h3 id="内核态的四个主要功能"><a href="#内核态的四个主要功能" class="headerlink" title="内核态的四个主要功能"></a>内核态的四个主要功能</h3><ol>
+<li>时钟管理</li>
+<li>中断机制</li>
+<li>原语<ol>
+<li>处于操作系统的最底层，是最接近硬件的部分。</li>
+<li>这些程序的运行具有原子性，其操作只能一气呵成。</li>
+<li>这些时间的运行时间都比较短，而且调用频繁。</li>
+</ol>
+</li>
+<li>系统控制的数据结构以及处理<ol>
+<li>进程管理<ol>
+<li>进程状态管理</li>
+<li>进程调度和分派</li>
+<li>创建和撤销进程控制块</li>
+</ol>
+</li>
+<li>存储器管理</li>
+<li>设备管理</li>
+</ol>
+</li>
+</ol>
+<h3 id="操作系统的体系结构"><a href="#操作系统的体系结构" class="headerlink" title="操作系统的体系结构"></a>操作系统的体系结构</h3><ol>
+<li>大内核</li>
+<li>微内核</li>
+</ol>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><ol>
+<li>互斥:当一个进程使用资源的时候，其他进程想要使用这个资源，必须要等之前的进程使用结束，这种共享资源的方式被称为互斥。</li>
+<li>临界资源:在一段时间内只允许一个进程访问的资源被称为临界资源或独占资源。</li>
+<li>时分复用技术:比如处理器的分时共享。</li>
+<li>空分复用技术:虚拟存储器。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fchapter1%E7%AC%94%E8%AE%B0/" data-id="ckhwtbp8o001clotscq16gacf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-代码大全笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/04/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -442,56 +610,6 @@
 
 
   
-    <article id="post-计算机书籍阅读方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2020-10-04T07:52:41.000Z" itemprop="datePublished">2020-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/">计算机书籍阅读方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前在金老师的live中听过关于如何阅读计算机书籍的方法，但是之前做的笔记不见了，所以这次重新写过。<br>金老师在live中有一张PPT，上面将看书一共分为五个阶段，分别如下</p>
-<ul>
-<li>预热阶段</li>
-<li>第一遍</li>
-<li>第二遍</li>
-<li>第三遍</li>
-<li>第四遍以及更多</li>
-</ul>
-<p>预热阶段是先构造整体知识结构，同时确定阅读顺序和具体学习路线，这个方法的好处在于，你可以看其中的重点部分，不用全部啃完一本大头书，<br>这个阶段主要目标是确定要学那些章节，对一本书或者这本书的技术有一个大概认知。</p>
-<p>第一遍仔细阅读第一章，快速的浏览一章的开头和结尾，跳过中间，因为中间部分会在结尾处，进行一个总结，所以中间可以选择性跳读，等到了第二遍在进行补充，<br>第二遍的时候，主要是对第一遍跳读的部分或者不懂的地方进行细读，同时也挑出最感兴趣的部分进行细读，如果不同的话，可以先留着。<br>到了第三遍就是对第一第二遍整体的复盘了，把没有看懂的弄懂。<br>第四遍以及更多遍则是通读全书，完成书上练习题，进行巩固。</p>
-<h3 id="阅读细节"><a href="#阅读细节" class="headerlink" title="阅读细节"></a>阅读细节</h3><p>如果是编程书的话，要分为两种情况，如果是之前没有接触过编程的话，还是要动手写书上的代码，而有编程经验的话，则需要跟上作者的思路，有课后习题，则要通过<br>课后习题来完成语法学习，在第一遍过程中，只需要看完预热阶段安排的章节即可，不需要全部看完，在第二遍中，选择性的敲书上代码，因为这个时候，就晓得书上代码讲的是什么了<br>在理解代码的情况下，可以有助于记忆语法。到了第三遍，语法和这门编程语言的概念已经掌握了，所以就可以动手做一些项目了。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>在学习中实践，在实践中学习，看书的过程中，遇到不懂的点可以记下来，或者找类似的书去看，不要做抄书式笔记，只需要把不懂的点和重点记录下来即可。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" data-id="ckhwtbp8v001jlots27ajclne" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -542,6 +660,10 @@
       <ul>
         
           <li>
+            <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/">正确的抄代码方式</a>
+          </li>
+        
+          <li>
             <a href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/">vue创建typescript项目</a>
           </li>
         
@@ -555,10 +677,6 @@
         
           <li>
             <a href="/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/">vue-cli3安装</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/24/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97chapter1/">Java多线程编程实战指南chapter1</a>
           </li>
         
       </ul>
