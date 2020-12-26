@@ -5,19 +5,19 @@
   
 
   
-  <title>java编程思想笔记 | Hexo</title>
+  <title>数据库第四章复习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="chapter5-初始化与清理构造器概念在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。 因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。 构造器是一种特别的方法，没有返回值，但是">
+  <meta name="description" content="名词解释介绍键 超键 主键 外键 候选键">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java编程思想笔记">
-<meta property="og:url" content="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="数据库第四章复习">
+<meta property="og:url" content="http://yoursite.com/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="chapter5-初始化与清理构造器概念在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。 因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。 构造器是一种特别的方法，没有返回值，但是">
+<meta property="og:description" content="名词解释介绍键 超键 主键 外键 候选键">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-18T09:18:59.000Z">
-<meta property="article:modified_time" content="2020-08-18T12:11:31.285Z">
+<meta property="article:published_time" content="2020-12-21T12:43:51.000Z">
+<meta property="article:modified_time" content="2020-12-21T13:27:13.085Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Java基础">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java编程思想笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-数据库第四章复习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-08-18T09:18:59.000Z" itemprop="datePublished">2020-08-18</time>
+    <a href="/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time datetime="2020-12-21T12:43:51.000Z" itemprop="datePublished">2020-12-21</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java编程思想笔记
+      数据库第四章复习
     </h1>
   
 
@@ -89,19 +89,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="chapter5-初始化与清理"><a href="#chapter5-初始化与清理" class="headerlink" title="chapter5-初始化与清理"></a>chapter5-初始化与清理</h2><h3 id="构造器概念"><a href="#构造器概念" class="headerlink" title="构造器概念"></a>构造器概念</h3><p>在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。</p>
-<p>因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。</p>
-<p>构造器是一种特别的方法，没有返回值，但是和void不一样，void本身是不会自动返回什么，但是可以选择让它返回别的东西，而构造器就不行。</p>
-<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>方法重载可以让同一个名字的方法不起冲突，而且方法重载的返回值类型通常是相同的，但是要参数列表不同才可以使用。</p>
-<p>当方法重载里面的参数列表接收到的实参小于形参的话，实参就会提升，如果大于方法重载的形参就会转换类型。</p>
-<h2 id="chapter6-访问权限控制"><a href="#chapter6-访问权限控制" class="headerlink" title="chapter6-访问权限控制"></a>chapter6-访问权限控制</h2>
+        <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="介绍键"><a href="#介绍键" class="headerlink" title="介绍键"></a>介绍键</h3><ol>
+<li>超键</li>
+<li>主键</li>
+<li>外键</li>
+<li>候选键</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="ckhwtbp87000flots3lvqfnnu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/" data-id="ckj53gtl80001jkts29y1hv0x" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -109,19 +110,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          设计模式-抽象工厂模式
+          我的2020年
         
       </div>
     </a>
   
   
-    <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">docker入门</div>
+      <div class="article-nav-title">正确的抄代码方式</div>
     </a>
   
 </nav>

@@ -64,6 +64,97 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-最近一些总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-10-20T13:25:41.000Z" itemprop="datePublished">2020-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/">最近一些总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="学习失误"><a href="#学习失误" class="headerlink" title="学习失误"></a>学习失误</h2><p>最近学习变得很忙碌，但是又感觉什么没学到，经过复盘，我发现了最近学习上的一些错误，<br>首先就是记录了大量的笔记，但是笔记又没有去看，也就是说花了很多时间做了无用功，<br>并不是说做笔记的行为不好，而是花大量时间在做笔记上，优点本末倒置了，<br>计算机是一门相对动手能力较强的学科，所以只需要记下重点内容就行。</p>
+<h2 id="如何改进"><a href="#如何改进" class="headerlink" title="如何改进"></a>如何改进</h2><p>吸收新知识，需要一段时间来消化新知识，最后输出消化内容，比如说看操作系统中的特性，并发，并行，异步，<br>第一遍看的时候，可以把三个概念记下来，然后去听老师/公开课讲解，等到了晚上或者下午，在自己结合资料总结。<br>也符合艾宾浩斯记忆法。</p>
+<p>然后利用周末做一个完整的总结，这样总结出来的东西就是自己的，而抄书式笔记的性价比完全太低，因为书本在那里<br>抄书式笔记只是做了一个搬运工，不如直接看书。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" data-id="ckhwtbp8s001glotsew1wc2er" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-阅读源码技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-10-07T03:42:33.000Z" itemprop="datePublished">2020-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/">阅读源码技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果实在github(或者类似的)上拉取的开源代码，就从第一个commit开始读，从第一个commit开始读的好处在于</p>
+<ul>
+<li>学习别人从零开始建立项目的步骤。</li>
+<li>一个项目从零到使用，有很多代码是为了解决bug而写，这些代码对于核心逻辑来说是一种干扰。</li>
+</ul>
+<p>针对大型项目代码较多，流程算法比较复杂，就需要遵守如下几个原则：</p>
+<ul>
+<li>先设计在代码，先了解设计和基本概念再下手写代码，比如MySQL的代码，先对它的架构设计有初步了解，有sql和存储，支持多存储引擎，理解线程模型和数据库基本概念。</li>
+<li>由粗到细，大型项目一般是由多个子项目组成，每个子项目完成自己独立的功能，一个子项目又由多个模块组成，每个模块会有多个类，第一阶段只需要了解每个模块和类的大概作用就行。</li>
+<li>由外到内，看实现的对外接口，从这些接口作为切入点，把整个开发流程搞透，并且晓得关键算法在哪实现。</li>
+<li>熟悉套路。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" data-id="ckhwtbp8z001tlotsa35u1kim" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-计算机书籍阅读方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/" class="article-date">
@@ -477,147 +568,6 @@
 
 
   
-    <article id="post-WSL开发环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
-  <time datetime="2020-09-02T06:40:31.000Z" itemprop="datePublished">2020-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">WSL开发环境搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="软件列表"><a href="#软件列表" class="headerlink" title="软件列表"></a>软件列表</h2><ol>
-<li>golang</li>
-<li>scrapy</li>
-</ol>
-<h2 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h2><p>因为某些特殊原因，需要使用代理才能下载，所以可以现在宿主机下载好以后，在从wsl2中复制过去，具体步骤就不写了，当然，如果你已经能够使用代理了，就可以使用如下命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br><span class="line"></span><br><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>如果没有代理就要输入这些命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvf go1.14.2.linux-amd64.tar.gz</span><br><span class="line">sudo mv go &#x2F;usr&#x2F;local</span><br></pre></td></tr></table></figure>
-
-<p>当把安装包移动到指定目录的时候，就可以开始配置golang开发环境了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$GOPATH&#x2F;bin:$GOROOT&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<p>最后运行 ~/.bashrc，为了确认有没有安装成功，输入go version，如果出现版本号，就说明安装成功了。</p>
-<h2 id="安装scrapy"><a href="#安装scrapy" class="headerlink" title="安装scrapy"></a>安装scrapy</h2><p>首先要安装pip3或者pip，这里讲下怎么安装pip3，输入命令</p>
-<p> <strong><code>sudo apt-get install python3-pip</code></strong></p>
-<p>安装好后，接着输入以下命令</p>
-<ol>
-<li>sudo apt-get install python-dev</li>
-<li>sudo pip install scrapy</li>
-</ol>
-<p>最后等进度条跑完就行了。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>完全可以当作Ubuntu来用，包括安装软件。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/02/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckhwtbp830008lots5i8ccj9x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-WSL2使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-08-28T06:19:19.000Z" itemprop="datePublished">2020-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/">WSL2开发配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装WSL2"><a href="#安装WSL2" class="headerlink" title="安装WSL2"></a>安装WSL2</h2><p>首先Windows10的版本必须是1903或者更高的版本才行。然后用管理员身份打开powershell，然后运行下面命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:VirtualMachinePlatform &#x2F;all &#x2F;norestart</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置WSL2为默认版本"><a href="#设置WSL2为默认版本" class="headerlink" title="设置WSL2为默认版本"></a>设置WSL2为默认版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2</span><br></pre></td></tr></table></figure>
-
-<h3 id="选择要安装的Linux版本"><a href="#选择要安装的Linux版本" class="headerlink" title="选择要安装的Linux版本"></a>选择要安装的Linux版本</h3><p>打开Microsoft Store，在里面搜索要安装的Linux版本，如下</p>
-<p><img src="https://docs.microsoft.com/en-us/windows/wsl/media/store.png" alt="View of Linux distributions in the Microsoft Store"></p>
-<p>我自己安装的是Ubuntu20.04，安装好以后就可以在powershell里面，输入ubuntu就启动了，然后就和安装Ubuntu一样，一步步设置过来。</p>
-<h3 id="安装zsh和ohmyzsh"><a href="#安装zsh和ohmyzsh" class="headerlink" title="安装zsh和ohmyzsh"></a>安装zsh和ohmyzsh</h3><p>zsh是一个shell工具，要比Ubuntu自带的bash好用，可以参考知乎上这个回答</p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21418449">https://www.zhihu.com/question/21418449</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh #安装zsh</span><br><span class="line">chsh -s &#x2F;bin&#x2F;zsh #设置为默认shell</span><br></pre></td></tr></table></figure>
-
-<p>接着安装oh my zsh，oh my zsh 可以让zsh变得更好用，更香，如果你有梯子的话可以使用下面命令安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.github.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;master&#x2F;tools&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<p>没有的话，就要GitHub上面把他clone下来。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;ohmyzsh&#x2F;ohmyzsh.git</span><br></pre></td></tr></table></figure>
-
-<p>接着cd ohmyzsh/tools/，然后./install.sh</p>
-<p>然后安装两个插件</p>
-<ul>
-<li><p><code>zsh-syntax-higlighting</code>语法高亮插件</p>
-<ul>
-<li><pre><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- &amp;#96;zsh-autosuggestions&amp;#96;语法历史记录插件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - &amp;#96;&amp;#96;&amp;#96;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    git clone https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;zsh-users&amp;#x2F;zsh-autosuggestions.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<p>移动到plugins中</p>
-<ul>
-<li>mv zsh-syntax-highlighting $ZSH_CUSTOM/plugins</li>
-<li>mv zsh-autosuggestions $ZSH_CUSTOM/plugins</li>
-</ul>
-<p>最后几个步骤</p>
-<ul>
-<li>cd ~</li>
-<li>vim .zshrc</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#在 plugins 一列中添加 zsh-autosuggestions，如下</span><br><span class="line">plugins&#x3D;(</span><br><span class="line">         git</span><br><span class="line">         zsh-syntax-highlighting</span><br><span class="line">         zsh-autosuggestions</span><br><span class="line">         )</span><br><span class="line"></span><br><span class="line"># 在文件末尾添加</span><br><span class="line">source $ZSH_CUSTOM&#x2F;plugins&#x2F;zsh-autosuggestions&#x2F;zsh-autosuggestions.zsh</span><br><span class="line">source $ZSH_CUSTOM&#x2F;plugins&#x2F;zsh-syntax-highlighting&#x2F;zsh-syntax-highlighting.zsh</span><br><span class="line"># 配置生效</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/28/WSL2%E4%BD%BF%E7%94%A8/" data-id="ckhwtbp810004lots0bazatln" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -646,7 +596,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 12.5px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
     </div>
   </div>
 
@@ -668,6 +618,14 @@
       <ul>
         
           <li>
+            <a href="/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/">我的2020年</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/">数据库第四章复习</a>
+          </li>
+        
+          <li>
             <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/">正确的抄代码方式</a>
           </li>
         
@@ -677,14 +635,6 @@
         
           <li>
             <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">数据库中视图的使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/">触发器和存储过程的使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/">vue-cli3安装</a>
           </li>
         
       </ul>
