@@ -64,6 +64,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java注解-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" class="article-date">
+  <time datetime="2020-08-12T02:16:22.000Z" itemprop="datePublished">2020-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/">java注解(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解也被称为元数据，为我们在代码中添加信息提供了一种形式化方法，可以让我们在之后某个时刻非常方便的使用这些数据，注解的参数类似于一个无参数方法，可以使用default设定一个默认值。</p>
+<p>Java中的类，方法，变量，参数和包等都可以被注解，注解可以通过反射来得到注解内容，在编译器生成类文件的时候，注解可以被嵌入到字节码中，Java虚拟机可以保留注解内容，可以在运行时的时候得到标注内容，也支持自定义Java注解。</p>
+<p>使用注解可以把元数据保存在java源代码中，注解的好处可以写出更加干净易读的代码以及编译期的类型检查。</p>
+<h3 id="元数据-Data-that-describes-other-data"><a href="#元数据-Data-that-describes-other-data" class="headerlink" title="元数据(Data that describes other data)"></a>元数据(Data that describes other data)</h3><p>元数据是描述数据的数据，有三种不同类型的元数据，分别是如下三种</p>
+<ol>
+<li>记叙性元数据：用于发现与辨别意义的资源，可以包括比如标题，摘要，作者和关键字等元素。</li>
+<li>结构性元数据：有关于数据容器的元数据，指示如何整理其中复合的对象，例如页面按照什么排序方法组成章节。</li>
+<li>管理性元数据：用于管理资源的信息，例如数据产生的时间和方式，文件种类和其他技术信息，以及谁有权限访问它。</li>
+</ol>
+<p>举个栗子，比如一本书，会列出作者，出版社等等，这里的作业，书名，出版社就是元数据，因为它们是用来描述具体数据/信息的数据/信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">作者:xxx</span><br><span class="line">书名:xxx</span><br><span class="line">出版社:xxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h3><p>java一共有7个内置的注解，3个在java.lang中，剩下4个在java.lang.annotation中，作用在代码中的注解</p>
+<ul>
+<li>@Override：表示当前的方法定义将覆盖超类中的方法，如果拼写错误，或者引用的接口没有这个方法，就会报编译错误。</li>
+<li>@Deprecated：如果使用了这个注解，编译器会发出编译警告。</li>
+<li>@SuppressWarnings：关闭不当的编译器警告。</li>
+</ul>
+<p>元注解，作用在其他注解的注解：</p>
+<ul>
+<li>@Retention：用来注解在那个级别可用。<ul>
+<li>编译期(RetentionPolicy,SOURCE)：注解将被编译器丢弃。</li>
+<li>class文件(RetentionPolicy.CLASS)：注解在class文件中可用，但会被vm抛弃。</li>
+<li>运行期(RetentionPolicy.RUNTIME)：VM将在运行期也保留注解，所以可以通过反射机制来获取注解信息。</li>
+</ul>
+</li>
+<li>@Documented：将注解包含在Javadoc里面</li>
+<li>@Target：用来定义你的注解会应用在什么地方。</li>
+<li>@Inherited：允许子类继承父类的注解。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckhwtbp88000hlotsgwl23pmg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/07/hello-world/" class="article-date">
@@ -141,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 12.5px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
     </div>
   </div>
 
@@ -163,6 +231,10 @@
       <ul>
         
           <li>
+            <a href="/2020/12/31/2021%E7%9A%84flags/">2021的flags</a>
+          </li>
+        
+          <li>
             <a href="/2020/12/26/%E9%A2%98%E6%B5%B7%E6%88%98%E6%9C%AF%E4%B8%8E%E5%88%B7%E9%A2%98/">题海战术与刷题</a>
           </li>
         
@@ -178,10 +250,6 @@
             <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/">正确的抄代码方式</a>
           </li>
         
-          <li>
-            <a href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/">vue创建typescript项目</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -194,7 +262,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2021 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
