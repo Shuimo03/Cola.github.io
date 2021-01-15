@@ -88,6 +88,9 @@
       
         <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>之前刷知乎，发现很多大神在大学都写过编译器和操作系统内核和其他好玩的，去年就有一个想写数据库的项目，后来到了新学校，节奏给带偏了，之前是模仿pingcap的TIDB，后来模仿到一半，就去做了实验室的项目，然后准备期末考试，现在又重新捡起来了。。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>根据粗浅的了解，一个最基础版本的内存数据库是，一个索引和SQL解析器就好了，所以寒假打算立个flag，先把SQL解析器写出来。。 正好提前为下学期的编译原理做准备。</p>
+<h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>词法分析主要把输入转换为一个个token，其中token中包含关键字和非关键字，比如 create table tableName，<br>通过分析之后，会得到3个token，这里的token是create,table和tableName，create和table属于关键字，tableName属于非关键字。</p>
+<p>关于语法分析这一块可以使用Flex来生成，</p>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>语法分析是生成语法树的过程，是整个解析过程中最复杂的部分，不过这一块也有语法分析器，比如Antlr。</p>
 
       
     </div>
