@@ -5,14 +5,19 @@
   
 
   
-  <title>Tag: 生活 | Cola</title>
+  <title>数据库实现之前端篇(1) | Cola</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Cola">
-<meta property="og:url" content="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/index.html">
+  <meta name="description" content="序言之前刷知乎，发现很多大神在大学都写过编译器和操作系统内核和其他好玩的，去年就有一个想写数据库的项目，后来到了新学校，节奏给带偏了，之前是模仿pingcap的TIDB，后来模仿到一半，就去做了实验室的项目，然后准备期末考试，现在又重新捡起来了。。 正文根据粗浅的了解，一个最基础版本的内存数据库是，一个索引和SQL解析器就好了，所以寒假打算立个flag，先把SQL解析器写出来。。 正好提前为下学期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库实现之前端篇(1)">
+<meta property="og:url" content="http://yoursite.com/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/index.html">
 <meta property="og:site_name" content="Cola">
+<meta property="og:description" content="序言之前刷知乎，发现很多大神在大学都写过编译器和操作系统内核和其他好玩的，去年就有一个想写数据库的项目，后来到了新学校，节奏给带偏了，之前是模仿pingcap的TIDB，后来模仿到一半，就去做了实验室的项目，然后准备期末考试，现在又重新捡起来了。。 正文根据粗浅的了解，一个最基础版本的内存数据库是，一个索引和SQL解析器就好了，所以寒假打算立个flag，先把SQL解析器写出来。。 正好提前为下学期">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-15T08:27:29.000Z">
+<meta property="article:modified_time" content="2021-01-15T08:33:10.567Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数据库实现">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cola" type="application/atom+xml">
@@ -62,78 +67,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/31/2021%E7%9A%84flags/" class="archive-article-date">
-  <time datetime="2020-12-31T10:52:42.000Z" itemprop="datePublished">Dec 31</time>
+        <section id="main"><article id="post-数据库实现之前端篇-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/" class="article-date">
+  <time datetime="2021-01-15T08:27:29.000Z" itemprop="datePublished">2021-01-15</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/31/2021%E7%9A%84flags/">2021的flags</a>
+    <h1 class="article-title" itemprop="name">
+      数据库实现之前端篇(1)
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/" class="archive-article-date">
-  <time datetime="2020-12-26T02:09:08.000Z" itemprop="datePublished">Dec 26</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/">我的2020年</a>
-    </h1>
-  
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>之前刷知乎，发现很多大神在大学都写过编译器和操作系统内核和其他好玩的，去年就有一个想写数据库的项目，后来到了新学校，节奏给带偏了，之前是模仿pingcap的TIDB，后来模仿到一半，就去做了实验室的项目，然后准备期末考试，现在又重新捡起来了。。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>根据粗浅的了解，一个最基础版本的内存数据库是，一个索引和SQL解析器就好了，所以寒假打算立个flag，先把SQL解析器写出来。。 正好提前为下学期的编译原理做准备。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/07/%E5%AD%A6%E6%9C%9F%E8%BF%87%E5%8D%8A%E7%9A%84%E6%94%B6%E8%8E%B7/" class="archive-article-date">
-  <time datetime="2020-11-07T02:41:08.000Z" itemprop="datePublished">Nov 7</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/07/%E5%AD%A6%E6%9C%9F%E8%BF%87%E5%8D%8A%E7%9A%84%E6%94%B6%E8%8E%B7/">学期过半的收获</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/" data-id="ckjy1asx3000044ts8km0d67k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/12/31/2021%E7%9A%84flags/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2021的flags</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
