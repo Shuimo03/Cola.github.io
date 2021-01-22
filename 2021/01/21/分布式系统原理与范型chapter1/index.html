@@ -5,19 +5,19 @@
   
 
   
-  <title>java注解(1) | Cola</title>
+  <title>分布式系统原理与范型chapter1 | Cola</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java注解注解注解也被称为元数据，为我们在代码中添加信息提供了一种形式化方法，可以让我们在之后某个时刻非常方便的使用这些数据，注解的参数类似于一个无参数方法，可以使用default设定一个默认值。 Java中的类，方法，变量，参数和包等都可以被注解，注解可以通过反射来得到注解内容，在编译器生成类文件的时候，注解可以被嵌入到字节码中，Java虚拟机可以保留注解内容，可以在运行时的时候得到标注内容，">
+  <meta name="description" content="分布式的定义分布式经典的一种定义是，多台计算机的集合，这个集合对于用户来说是一个单机系统，好比计算机内部结构，对于普通用户来说，计算机就是一个整体，实际上计算机是由不同的硬件组成。 分布式必须能够让用户方便访问资源，必须隐藏一个资源在一个网络上分布的一个事实，必须是开发的，而且是可扩展的。 分布式的特性 透明性 分为透明性 位置透明性 迁移透明性 重定位透明性 赋值透明性 并发透明性 故障透明性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java注解(1)">
-<meta property="og:url" content="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/index.html">
+<meta property="og:title" content="分布式系统原理与范型chapter1">
+<meta property="og:url" content="http://yoursite.com/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/index.html">
 <meta property="og:site_name" content="Cola">
-<meta property="og:description" content="Java注解注解注解也被称为元数据，为我们在代码中添加信息提供了一种形式化方法，可以让我们在之后某个时刻非常方便的使用这些数据，注解的参数类似于一个无参数方法，可以使用default设定一个默认值。 Java中的类，方法，变量，参数和包等都可以被注解，注解可以通过反射来得到注解内容，在编译器生成类文件的时候，注解可以被嵌入到字节码中，Java虚拟机可以保留注解内容，可以在运行时的时候得到标注内容，">
+<meta property="og:description" content="分布式的定义分布式经典的一种定义是，多台计算机的集合，这个集合对于用户来说是一个单机系统，好比计算机内部结构，对于普通用户来说，计算机就是一个整体，实际上计算机是由不同的硬件组成。 分布式必须能够让用户方便访问资源，必须隐藏一个资源在一个网络上分布的一个事实，必须是开发的，而且是可扩展的。 分布式的特性 透明性 分为透明性 位置透明性 迁移透明性 重定位透明性 赋值透明性 并发透明性 故障透明性">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-12T02:16:22.000Z">
-<meta property="article:modified_time" content="2020-08-12T04:47:05.583Z">
+<meta property="article:published_time" content="2021-01-21T13:29:44.000Z">
+<meta property="article:modified_time" content="2021-01-21T14:08:15.159Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Java基础">
+<meta property="article:tag" content="分布式系统">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cola" type="application/atom+xml">
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java注解-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-分布式系统原理与范型chapter1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" class="article-date">
-  <time datetime="2020-08-12T02:16:22.000Z" itemprop="datePublished">2020-08-12</time>
+    <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/" class="article-date">
+  <time datetime="2021-01-21T13:29:44.000Z" itemprop="datePublished">2021-01-21</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java注解(1)
+      分布式系统原理与范型chapter1
     </h1>
   
 
@@ -89,44 +89,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解也被称为元数据，为我们在代码中添加信息提供了一种形式化方法，可以让我们在之后某个时刻非常方便的使用这些数据，注解的参数类似于一个无参数方法，可以使用default设定一个默认值。</p>
-<p>Java中的类，方法，变量，参数和包等都可以被注解，注解可以通过反射来得到注解内容，在编译器生成类文件的时候，注解可以被嵌入到字节码中，Java虚拟机可以保留注解内容，可以在运行时的时候得到标注内容，也支持自定义Java注解。</p>
-<p>使用注解可以把元数据保存在java源代码中，注解的好处可以写出更加干净易读的代码以及编译期的类型检查。</p>
-<h3 id="元数据-Data-that-describes-other-data"><a href="#元数据-Data-that-describes-other-data" class="headerlink" title="元数据(Data that describes other data)"></a>元数据(Data that describes other data)</h3><p>元数据是描述数据的数据，有三种不同类型的元数据，分别是如下三种</p>
-<ol>
-<li>记叙性元数据：用于发现与辨别意义的资源，可以包括比如标题，摘要，作者和关键字等元素。</li>
-<li>结构性元数据：有关于数据容器的元数据，指示如何整理其中复合的对象，例如页面按照什么排序方法组成章节。</li>
-<li>管理性元数据：用于管理资源的信息，例如数据产生的时间和方式，文件种类和其他技术信息，以及谁有权限访问它。</li>
+        <h3 id="分布式的定义"><a href="#分布式的定义" class="headerlink" title="分布式的定义"></a>分布式的定义</h3><p>分布式经典的一种定义是，多台计算机的集合，这个集合对于用户来说是一个单机系统，好比计算机内部结构，对于普通用户来说，计算机就是一个整体，实际上计算机是由不同的硬件组成。</p>
+<p>分布式必须能够让用户方便访问资源，必须隐藏一个资源在一个网络上分布的一个事实，必须是开发的，而且是可扩展的。</p>
+<h3 id="分布式的特性"><a href="#分布式的特性" class="headerlink" title="分布式的特性"></a>分布式的特性</h3><ol>
+<li>透明性<ol>
+<li>分为透明性</li>
+<li>位置透明性</li>
+<li>迁移透明性</li>
+<li>重定位透明性</li>
+<li>赋值透明性</li>
+<li>并发透明性</li>
+<li>故障透明性</li>
 </ol>
-<p>举个栗子，比如一本书，会列出作者，出版社等等，这里的作业，书名，出版社就是元数据，因为它们是用来描述具体数据/信息的数据/信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">作者:xxx</span><br><span class="line">书名:xxx</span><br><span class="line">出版社:xxxx</span><br></pre></td></tr></table></figure>
-
-<h3 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h3><p>java一共有7个内置的注解，3个在java.lang中，剩下4个在java.lang.annotation中，作用在代码中的注解</p>
-<ul>
-<li>@Override：表示当前的方法定义将覆盖超类中的方法，如果拼写错误，或者引用的接口没有这个方法，就会报编译错误。</li>
-<li>@Deprecated：如果使用了这个注解，编译器会发出编译警告。</li>
-<li>@SuppressWarnings：关闭不当的编译器警告。</li>
-</ul>
-<p>元注解，作用在其他注解的注解：</p>
-<ul>
-<li>@Retention：用来注解在那个级别可用。<ul>
-<li>编译期(RetentionPolicy,SOURCE)：注解将被编译器丢弃。</li>
-<li>class文件(RetentionPolicy.CLASS)：注解在class文件中可用，但会被vm抛弃。</li>
-<li>运行期(RetentionPolicy.RUNTIME)：VM将在运行期也保留注解，所以可以通过反射机制来获取注解信息。</li>
-</ul>
 </li>
-<li>@Documented：将注解包含在Javadoc里面</li>
-<li>@Target：用来定义你的注解会应用在什么地方。</li>
-<li>@Inherited：允许子类继承父类的注解。</li>
-</ul>
-
+<li>可扩展性<ol>
+<li>隐藏通信等待时间</li>
+<li>分布技术</li>
+<li>复制技术</li>
+</ol>
+</li>
+</ol>
+<ol start="3">
+<li>共享性</li>
+<li>开放性<ol>
+<li>互操作性</li>
+<li>可移植性</li>
+</ol>
+</li>
+</ol>
+<h3 id="可扩展性遇到的问题"><a href="#可扩展性遇到的问题" class="headerlink" title="可扩展性遇到的问题"></a>可扩展性遇到的问题</h3><p>当一个系统需要进行扩张的时候，首先要考虑规模上的扩展，在需要支持更多用户货资源的时候，常常受到集中的服务、数据以及算法所造成的限制。<br>比如</p>
+<ol>
+<li>集中式服务</li>
+<li>集中式数据</li>
+<li>集中式算法</li>
+</ol>
+<h3 id="分布式系统的类型"><a href="#分布式系统的类型" class="headerlink" title="分布式系统的类型"></a>分布式系统的类型</h3><ol>
+<li>集群计算系统</li>
+<li>网格计算系统</li>
+</ol>
+<h3 id="分布式信息系统"><a href="#分布式信息系统" class="headerlink" title="分布式信息系统"></a>分布式信息系统</h3><h3 id="ACID-事务处理的属性"><a href="#ACID-事务处理的属性" class="headerlink" title="(ACID)事务处理的属性"></a>(ACID)事务处理的属性</h3><ol>
+<li>原子性</li>
+<li>一致性</li>
+<li>独立性</li>
+<li>持久性</li>
+</ol>
+<h3 id="分散算法"><a href="#分散算法" class="headerlink" title="分散算法"></a>分散算法</h3><p>分散算法和集中式算法不同的特性:</p>
+<ol>
+<li>没有任何计算机拥有关于系统状态的而信息</li>
+<li>计算机只根据本地信息做出决策。</li>
+<li>某台计算机的故障不会让算法崩溃。</li>
+<li>没有这样的假设：存在全局性时钟。</li>
+</ol>
+<h3 id="分布式的目标"><a href="#分布式的目标" class="headerlink" title="分布式的目标"></a>分布式的目标</h3><ol>
+<li>资源共享</li>
+<li><h3 id="分布式系统解决的问题"><a href="#分布式系统解决的问题" class="headerlink" title="分布式系统解决的问题"></a>分布式系统解决的问题</h3></li>
+</ol>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ol>
+<li>中间件在分布式系统中扮演者什么角色？</li>
+<li>分布式中的透明性是什么？</li>
+<li>在分布式系统中，为什么有时候难以隐藏故障以及故障恢复过程？</li>
+</ol>
+<h3 id="中间件的作用"><a href="#中间件的作用" class="headerlink" title="中间件的作用"></a>中间件的作用</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckhwtbp88000hlotsgwl23pmg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/" data-id="ckk7ponh20001iktsh6kj9zh5" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li></ul>
 
     </footer>
   </div>
@@ -134,19 +164,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          win10家庭版安装docker
+          分布式系统原理与范型chapter2
         
       </div>
     </a>
   
   
-    <a href="/2020/08/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/01/20/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">docker部署springboot项目</div>
     </a>
   
 </nav>
