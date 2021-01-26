@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-服务器安装https证书" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/" class="article-date">
+  <time datetime="2021-01-26T03:17:36.000Z" itemprop="datePublished">2021-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/">服务器安装https证书</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前在实验室帮老师干活的时候，因为小程序需要用到https证书和服务器，所以就有了需求来写这篇文章。</p>
+<p>这里以腾讯云为例子，首先到<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/ssl/dsc/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E3%80%82">https://console.cloud.tencent.com/ssl/dsc/，下载证书。</a></p>
+<p>下载好之后，会显示四种服务器，因为使用了springboot作为后台开发框架，所以选择tomcat目录。</p>
+<p>把里面的东西复制出来，贴到和application.properties一个目录下，接着编辑application.properties</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server.port= 443</span><br><span class="line"></span><br><span class="line"># SSL证书路径</span><br><span class="line">server.ssl.key-store = classpath:jksFileName.jks</span><br><span class="line">#SSL证书密码</span><br><span class="line">server.ssl.key-store-password=</span><br><span class="line">#证书类型</span><br><span class="line">server.ssl.key-store-type=JKS</span><br></pre></td></tr></table></figure>
+
+<p>配置好之后，需要新建一个config层，里面编写http跳转到https的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.Context;</span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.connector.Connector;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityCollection;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityConstraint;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/1/25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpsConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">TomcatServletWebServerFactory <span class="title">tomcatServletWebServerFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TomcatServletWebServerFactory factory = <span class="keyword">new</span> TomcatServletWebServerFactory()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postProcessContext</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">                SecurityConstraint constraint = <span class="keyword">new</span> SecurityConstraint();</span><br><span class="line">                constraint.setUserConstraint(<span class="string">&quot;CONFIDENTIAL&quot;</span>);</span><br><span class="line">                SecurityCollection collection = <span class="keyword">new</span> SecurityCollection();</span><br><span class="line">                collection.addPattern(<span class="string">&quot;/*&quot;</span>);</span><br><span class="line">                constraint.addCollection(collection);</span><br><span class="line">                context.addConstraint(constraint);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        factory.addAdditionalTomcatConnectors(connector());</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Connector <span class="title">connector</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Connector connector = <span class="keyword">new</span> Connector(<span class="string">&quot;org.apache.coyote.http11.Http11NioProtocol&quot;</span>);</span><br><span class="line">        connector.setScheme(<span class="string">&quot;http&quot;</span>);</span><br><span class="line">        <span class="comment">//Connector监听的http的端口号</span></span><br><span class="line">        connector.setPort(<span class="number">8080</span>);</span><br><span class="line">        connector.setSecure(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//映射端口</span></span><br><span class="line">        connector.setRedirectPort(<span class="number">443</span>);</span><br><span class="line">        <span class="keyword">return</span> connector;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到此就配置完成了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/" data-id="ckkdfwgmg0000nsts65xth8eo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Restful-API使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/" class="article-date">
@@ -553,47 +601,6 @@
 
 
   
-    <article id="post-正确的抄代码方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/" class="article-date">
-  <time datetime="2020-12-12T12:21:51.000Z" itemprop="datePublished">2020-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/">正确的抄代码方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“抄代码”这件事情已经变成了学习编程的一种方式，抄代码也分很多种，一种是属于无脑抄，直接Google百度一顿搜，然后找到方法，就开始抄了，这个阶段属于搬运工，所以我做了快三年的搬运工，这种方式属于很急的解决问题，比如说，实现一个登录注册，只有1-2天时间，对于我来说，只想快速实现，然后不管它，这个阶段缺少一个思考的过程。</p>
-<p>而正确有效的抄代码姿势，应该是先想好需求，然后去查找解决方案，在确定解决方案后，去思考这个是怎么实现的，中途可以debug，去跑一跑代码，弄清楚自己为什么实现不了，而别人实现了。</p>
-<p>这是最近抄搜索引擎发现的问题，只会无脑一顿抄，然后运行看效果，也没弄清楚。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/" data-id="ckilohrfm0000x8tsgbhg41bn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -622,7 +629,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 12.5px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
     </div>
   </div>
 
@@ -644,6 +651,10 @@
       <ul>
         
           <li>
+            <a href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/">服务器安装https证书</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/">Restful API使用(一)</a>
           </li>
         
@@ -657,10 +668,6 @@
         
           <li>
             <a href="/2021/01/20/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/">docker部署springboot项目</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/">数据库实现之前端篇(1)</a>
           </li>
         
       </ul>
