@@ -64,6 +64,148 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-在Ubuntu中安装数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/13/%E5%9C%A8Ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-11-13T02:25:42.000Z" itemprop="datePublished">2020-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/13/%E5%9C%A8Ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93/">在Ubuntu中安装数据库并且使用远程登录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先更新源，输入以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>接着安装MySQL，可以去官网下载好apt包，也可以直接install，默认是MySQL5.7，这里直接安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>安装完成，以后输入mysql -u root 然后按下回车，这个时候要求输入密码，在按下回车，就进入到了MySQL中。</p>
+<p>这个时候可以选择继续使用root用户，也可以新建一个用户然后给用户权限，末尾会有链接，这里就跳过了。</p>
+<p>完成上面一步以后，就剩下最后一步，如果是Ubuntu的话，就需要到/etc/mysql/mysql.conf.d/下修改<br>mysqld.cnf文件，找到bind-address，给注释掉。</p>
+<p>最后重启MySQL，就可以远程连接了。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyf2333/article/details/84898584">https://blog.csdn.net/zyf2333/article/details/84898584</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/61798dbcef58">https://www.jianshu.com/p/61798dbcef58</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/35e7af7db96a">https://www.jianshu.com/p/35e7af7db96a</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/13/%E5%9C%A8Ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckhwtbp8m0017lotsfqc50pcb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-学期过半的收获" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/07/%E5%AD%A6%E6%9C%9F%E8%BF%87%E5%8D%8A%E7%9A%84%E6%94%B6%E8%8E%B7/" class="article-date">
+  <time datetime="2020-11-07T02:41:08.000Z" itemprop="datePublished">2020-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/07/%E5%AD%A6%E6%9C%9F%E8%BF%87%E5%8D%8A%E7%9A%84%E6%94%B6%E8%8E%B7/">学期过半的收获</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>去年这个时候差不多已经从学校卷铺盖走人了，在家准备专升本了，没想到现在在新学校的图书馆里面走神想事情，写下这篇文章。<br>开学过去半学期了，刚开学的时候在想，为什么这个学期会开两门编程语言的课，我要自学六门专业课，不听老师讲，和原来一样就好，然而就被无情打脸，这里每个老师都蛮负责，不会出现之前问老师专业问题，然后大家两脸懵逼，互相对视的尴尬情景。<br>基本上每门课都有对应的大作业，如果没有的话，也会去找lab做，比如python老师就比较好玩，让我们在数据分析和搜索引擎中二选一(大致两个方向)，给一个学期的时间去做，还是蛮好玩的，软工也是选题做项目，虽然项目很多，每次还要写很多实验报告，刷很多题，虽然很累但是收获也很大吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/07/%E5%AD%A6%E6%9C%9F%E8%BF%87%E5%8D%8A%E7%9A%84%E6%94%B6%E8%8E%B7/" data-id="ckhwtbp8l0014lotsfc41767e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于我学习计算机的方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/05/%E5%85%B3%E4%BA%8E%E6%88%91%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time datetime="2020-11-05T14:28:40.000Z" itemprop="datePublished">2020-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/05/%E5%85%B3%E4%BA%8E%E6%88%91%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%96%B9%E5%BC%8F/">关于我学习计算机的方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前写过类似的，但是属于缝合多个答案，马上期末考试了，这篇文章还是11月创建的，换个角度来看，我的拖延症还是蛮严重的。</p>
+<p>说回正题，之前每天看起来很忙，实际上每天学习时间长度在5-7小时，其中还有点迷迷糊糊，属于低效学习。</p>
+<p>说明想要有高效的学习必须要保证睡眠充足，所以每天中午最好能睡上一小会。</p>
+<p>接着是关于学习任务优先级的问题，这个其实可以当成是进程调度问题，之前属于先来先服务方式，每次都把最困难或者耗时最长的放在首位，这样的话，一天除去上课时间，剩下的时间都在写这个，如果能完成还好，没有完成的话，则会浪费很多时间和精力在上面，所以这种性价比不高。</p>
+<p>个人觉得，应该先将容易理解的或者相对来说比较熟悉的，放在前面，这样处理起来较快。</p>
+<p>就拿最近这段时间举例，看起来每天都在忙，但是只有自己才晓得有多低效，因为一天中的大部分重要时间都花费在大作业上面，软工和python两个大作业，这样的话，就和之前情况一样，如果当天能够解决，就还好，如果当天没有解决，那大部分精力和时间已经用出去了，但是收获不大。</p>
+<p>而且也没有心情在学其他课程，所以做了一个调整，就是将要看的资料，比如PPT，论文，视频等等，放在首位，首先这样的话，能够保障有所收获，至少是可以看到头的，但是写项目代码属于周期较长，虽然可以分解成一个个小目标，但是在写代码的过程中，很多不可预料性太多，容易耽误时间和精力。</p>
+<p>所以这里总结一下:</p>
+<ol>
+<li>身体最重要，任何学习方式，如果身体不佳，再怎么高效的学习方式都没有用。</li>
+<li>调整任务优先级，把较为简单的调到前面。</li>
+<li>需要复习旧知识和预习新知识。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/05/%E5%85%B3%E4%BA%8E%E6%88%91%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="ckhwtbp8j000zlots350qfhy9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-操作系统chapter2笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fchapter2%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -613,145 +755,6 @@
 
 
   
-    <article id="post-关于如何实现一个数据库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
-  <time datetime="2020-11-01T08:39:29.000Z" itemprop="datePublished">2020-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/">关于如何实现一个数据库-绪论</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p>算是一个新坑吧，这个学期开了数据库原理的课程，抱着开什么课造什么轮子，以及烂尾的心态去写一个数据库，一开始在知乎上找了几个回答，链接下面</p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></p>
-<p>其中张原嘉答主的很不错，一开始我的路子走错了，我直接去看了tidb的源码，模仿他们的parser，这一步其实还好，编写sql语法规则，关键在于，添加了很多无用功在里面，然后一些基础的功能没有去实现，所以中间浪费了好多时间，不过后期也晓得如何去抄去模仿项目的代码。</p>
-<p>如果时间回到最早开始写数据库，我想我应该还是会去看tidb的parser，但是不会在对着抄，而是挑选一些简单部分去实现，然后再去做索引结构。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://pingcap.com/blog-cn/tidb-source-code-reading-5/">https://pingcap.com/blog-cn/tidb-source-code-reading-5/</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35382593/answer/102269843">https://www.zhihu.com/question/35382593/answer/102269843</a></li>
-<li>《数据库系统实现》</li>
-<li>《数据库系统与概念》</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/11/01/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckhwtbp8h000vlots411v2biw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-最近一些总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" class="article-date">
-  <time datetime="2020-10-20T13:25:41.000Z" itemprop="datePublished">2020-10-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/">最近一些总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="学习失误"><a href="#学习失误" class="headerlink" title="学习失误"></a>学习失误</h2><p>最近学习变得很忙碌，但是又感觉什么没学到，经过复盘，我发现了最近学习上的一些错误，<br>首先就是记录了大量的笔记，但是笔记又没有去看，也就是说花了很多时间做了无用功，<br>并不是说做笔记的行为不好，而是花大量时间在做笔记上，优点本末倒置了，<br>计算机是一门相对动手能力较强的学科，所以只需要记下重点内容就行。</p>
-<h2 id="如何改进"><a href="#如何改进" class="headerlink" title="如何改进"></a>如何改进</h2><p>吸收新知识，需要一段时间来消化新知识，最后输出消化内容，比如说看操作系统中的特性，并发，并行，异步，<br>第一遍看的时候，可以把三个概念记下来，然后去听老师/公开课讲解，等到了晚上或者下午，在自己结合资料总结。<br>也符合艾宾浩斯记忆法。</p>
-<p>然后利用周末做一个完整的总结，这样总结出来的东西就是自己的，而抄书式笔记的性价比完全太低，因为书本在那里<br>抄书式笔记只是做了一个搬运工，不如直接看书。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/20/%E6%9C%80%E8%BF%91%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" data-id="ckhwtbp8s001glotsew1wc2er" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-阅读源码技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" class="article-date">
-  <time datetime="2020-10-07T03:42:33.000Z" itemprop="datePublished">2020-10-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/">阅读源码技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果实在github(或者类似的)上拉取的开源代码，就从第一个commit开始读，从第一个commit开始读的好处在于</p>
-<ul>
-<li>学习别人从零开始建立项目的步骤。</li>
-<li>一个项目从零到使用，有很多代码是为了解决bug而写，这些代码对于核心逻辑来说是一种干扰。</li>
-</ul>
-<p>针对大型项目代码较多，流程算法比较复杂，就需要遵守如下几个原则：</p>
-<ul>
-<li>先设计在代码，先了解设计和基本概念再下手写代码，比如MySQL的代码，先对它的架构设计有初步了解，有sql和存储，支持多存储引擎，理解线程模型和数据库基本概念。</li>
-<li>由粗到细，大型项目一般是由多个子项目组成，每个子项目完成自己独立的功能，一个子项目又由多个模块组成，每个模块会有多个类，第一阶段只需要了解每个模块和类的大概作用就行。</li>
-<li>由外到内，看实现的对外接口，从这些接口作为切入点，把整个开发流程搞透，并且晓得关键算法在哪实现。</li>
-<li>熟悉套路。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/07/%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81%E6%8A%80%E5%B7%A7/" data-id="ckhwtbp8z001tlotsa35u1kim" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -770,7 +773,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
     </div>
   </div>
 
@@ -780,7 +783,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12.5px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 15px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12.5px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 16px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 14px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 18px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px;">生活</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
     </div>
   </div>
 
@@ -789,7 +792,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -802,23 +805,23 @@
       <ul>
         
           <li>
+            <a href="/2021/03/28/%E4%B8%80-%E5%BA%8F%E8%A8%80-SQL%E7%BC%96%E8%AF%91%E5%99%A8/">(一)序言-SQL编译器</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/18/Gcc%E7%94%9F%E6%88%90%E7%9A%84%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E5%AF%B9%E6%AF%94LLVM/">Gcc生成的汇编代码对比LLVM</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/03/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">雪花算法实现</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BD%93%E7%9F%BF%E6%9C%BA%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/">记录一次服务器被当矿机解决方法</a>
           </li>
         
           <li>
             <a href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/">服务器安装https证书</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/">Restful API使用(一)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter2/">分布式系统原理与范型chapter2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/">分布式系统原理与范型chapter1</a>
           </li>
         
       </ul>
