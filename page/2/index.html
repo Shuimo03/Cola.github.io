@@ -64,6 +64,400 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-记录一次服务器被当矿机解决记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BD%93%E7%9F%BF%E6%9C%BA%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time datetime="2021-02-02T23:46:27.000Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BD%93%E7%9F%BF%E6%9C%BA%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/">记录一次服务器被当矿机解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>腾讯云之前发来过警告说服务器被攻击了，当时是在tmp目录下，有一个文件无法删除，chmod 777 修改文件都没有办法，还好那个时候没有安装什么东西，于是就重装了，最近跑了一个docker服务，发现每次都会无缘无故多出两个镜像，一个是ubuntu，一个是其他的，后来每次自己的镜像总会消失，并且CPU占用率就居然有90%。。<br>发现是一个kdevtmpfsi进程，通过Google发现是一个挖矿病毒。。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>使用top命令，查看那个程序占用率CPU最高，一般是50%或者90%，接着使用kill -9 PID 杀掉这个进程，但是还会回来，是因为写了定时任务。</li>
+<li>接着使用find / -name kdevtmpfsi和find / -name kinsing，找到这些文件，并且删除，这里有一个坑的地方在于，可能根本删不掉，就算是root权限都不行，可以使用chattr工具。</li>
+<li>crontab -l查看定时任务，如果这里有权限的话，就可以crontab -e把定时任务删除。</li>
+</ol>
+<h3 id="防护措施"><a href="#防护措施" class="headerlink" title="防护措施"></a>防护措施</h3><p>主要原因还是因为对docker不熟悉，刚刚接触上手，这个病毒主要是通过扫描docker端口2375，可以在docker.service，把-H 0.0.0.0:2375改了，或者是在云服务器中的安全组里面关闭端口，同时修改ssh端口。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/cfm_gavin/article/details/103803448">https://blog.csdn.net/cfm_gavin/article/details/103803448</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/60151640/kdevtmpfsi-using-the-entire-cpu">https://stackoverflow.com/questions/60151640/kdevtmpfsi-using-the-entire-cpu</a></li>
+<li><a target="_blank" rel="noopener" href="https://meanands.medium.com/kdevtmpfsi-using-100-of-cpu-here-is-how-you-can-fix-that-89c247a24442">https://meanands.medium.com/kdevtmpfsi-using-100-of-cpu-here-is-how-you-can-fix-that-89c247a24442</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BD%93%E7%9F%BF%E6%9C%BA%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" data-id="ckps0md7r0034tgts2il4h2lw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-服务器安装https证书" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/" class="article-date">
+  <time datetime="2021-01-26T03:17:36.000Z" itemprop="datePublished">2021-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/">服务器安装https证书</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前在实验室帮老师干活的时候，因为小程序需要用到https证书和服务器，所以就有了需求来写这篇文章。</p>
+<p>这里以腾讯云为例子，首先到<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/ssl/dsc/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E3%80%82">https://console.cloud.tencent.com/ssl/dsc/，下载证书。</a></p>
+<p>下载好之后，会显示四种服务器，因为使用了springboot作为后台开发框架，所以选择tomcat目录。</p>
+<p>把里面的东西复制出来，贴到和application.properties一个目录下，接着编辑application.properties</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server.port= 443</span><br><span class="line"></span><br><span class="line"># SSL证书路径</span><br><span class="line">server.ssl.key-store = classpath:jksFileName.jks</span><br><span class="line">#SSL证书密码</span><br><span class="line">server.ssl.key-store-password=</span><br><span class="line">#证书类型</span><br><span class="line">server.ssl.key-store-type=JKS</span><br></pre></td></tr></table></figure>
+
+<p>配置好之后，需要新建一个config层，里面编写http跳转到https的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.Context;</span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.connector.Connector;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityCollection;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.descriptor.web.SecurityConstraint;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/1/25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpsConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">TomcatServletWebServerFactory <span class="title">tomcatServletWebServerFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TomcatServletWebServerFactory factory = <span class="keyword">new</span> TomcatServletWebServerFactory()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postProcessContext</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">                SecurityConstraint constraint = <span class="keyword">new</span> SecurityConstraint();</span><br><span class="line">                constraint.setUserConstraint(<span class="string">&quot;CONFIDENTIAL&quot;</span>);</span><br><span class="line">                SecurityCollection collection = <span class="keyword">new</span> SecurityCollection();</span><br><span class="line">                collection.addPattern(<span class="string">&quot;/*&quot;</span>);</span><br><span class="line">                constraint.addCollection(collection);</span><br><span class="line">                context.addConstraint(constraint);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        factory.addAdditionalTomcatConnectors(connector());</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Connector <span class="title">connector</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Connector connector = <span class="keyword">new</span> Connector(<span class="string">&quot;org.apache.coyote.http11.Http11NioProtocol&quot;</span>);</span><br><span class="line">        connector.setScheme(<span class="string">&quot;http&quot;</span>);</span><br><span class="line">        <span class="comment">//Connector监听的http的端口号</span></span><br><span class="line">        connector.setPort(<span class="number">8080</span>);</span><br><span class="line">        connector.setSecure(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//映射端口</span></span><br><span class="line">        connector.setRedirectPort(<span class="number">443</span>);</span><br><span class="line">        <span class="keyword">return</span> connector;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到此就配置完成了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/" data-id="ckps0md7i002htgts8r0kd8xd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Restful-API使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2021-01-22T00:26:57.000Z" itemprop="datePublished">2021-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/">Restful API使用(一)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Restful-API使用-一"><a href="#Restful-API使用-一" class="headerlink" title="Restful API使用(一)"></a>Restful API使用(一)</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>REST 是一种基于超媒体构建分布式系统的架构风格。 REST 独立于任何基础协议，并且不一定绑定到 HTTP。 但是，最常见的 REST 实现使用 HTTP 作为应用程序协议。</p>
+<p>基于 HTTP 的 REST 的主要优势在于它使用开放标准，不会绑定 API 的实现，也不会将客户端应用程序绑定到任何具体实现。</p>
+<h3 id="RESTful-API主要原则"><a href="#RESTful-API主要原则" class="headerlink" title="RESTful API主要原则"></a>RESTful API主要原则</h3><ol>
+<li>RESTful API围绕资源进行设计，资源可以由客户端访问任何类型的对象、数据或者服务。</li>
+<li>每个资源都一个标识符，能够唯一标识该资源的URL。</li>
+<li>客户端通过交换资源的表达方式来和服务交互，主流的是JSON作为交换格式。</li>
+<li>RESTful API使用统一接口，这有助于分离客户端和服务实现，对于基于HTTP构建的 RESTful API，统一接口包括使用标准的HTTP谓词对资源执行操作，最常见的是GET、POST、PUT、PATCH、DELETE。</li>
+<li>资源名用复数形式表示</li>
+<li>REST API 使用无状态请求模型。 HTTP 请求应是独立的并可按任意顺序发生，因此保留请求之间的瞬时状态信息并不可行。 信息的唯一存储位置就在资源内，并且每个请求应是原子操作。 此约束可让 Web 服务获得高度可伸缩性，因为无需保留客户端与特定服务器之间的关联。 任何服务器可以处理来自任何客户端的任何请求。</li>
+</ol>
+<h3 id="CRUD对应的HTTP标准操作"><a href="#CRUD对应的HTTP标准操作" class="headerlink" title="CRUD对应的HTTP标准操作"></a>CRUD对应的HTTP标准操作</h3><p>对于资源的具体类型，由HTTP动词来决定，常用的HTTP动词有以下五个(括号内是对应的SQL命令)</p>
+<ol>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+</ol>
+<h3 id="RESTful-API例子"><a href="#RESTful-API例子" class="headerlink" title="RESTful API例子"></a>RESTful API例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET/books:获取所有图书的信息</span><br><span class="line">GET/books/id:获取某本图书信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>这里使用springboot中的几个注解来完成一些基本的操作，首先是根据id来查询某个信息，比如根据id查询图书信息，这里只关注controller层。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation(&quot;输入id获取对应id的图书信息&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(value = &quot;/api/get/books/id/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONArray <span class="title">findByTreeId</span><span class="params">(<span class="meta">@PathVariable(value = &quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">    JSONArray jsonArray = <span class="keyword">new</span> JSONArray();</span><br><span class="line">    jsonArray.add(mapService.getTreeInformation(id));</span><br><span class="line">    <span class="keyword">return</span> jsonArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(&quot;显示所有图书信息的信息&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/api/get/trees&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;book&gt; <span class="title">getAllBook</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> bookService.getAllBook();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h3><p><a target="_blank" rel="noopener" href="https://cizixs.com/2016/12/12/restful-api-design-guide/">https://cizixs.com/2016/12/12/restful-api-design-guide/</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design">https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design</a></p>
+<p><a target="_blank" rel="noopener" href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html">http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/05/restful_api.html">https://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api">https://docs.github.com/en/rest/overview/resources-in-the-rest-api</a></p>
+<p><a target="_blank" rel="noopener" href="http://kaelzhang81.github.io/2019/05/24/Restful-API%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">http://kaelzhang81.github.io/2019/05/24/Restful-API%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</a></p>
+<p><a target="_blank" rel="noopener" href="https://echocow.cn/articles/2019/01/05/1546684795983.html#toc_h2_3">https://echocow.cn/articles/2019/01/05/1546684795983.html#toc_h2_3</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://kaelzhang81.github.io/2019/05/24/Restful-API%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">http://kaelzhang81.github.io/2019/05/24/Restful-API%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/22/Restful-API%E4%BD%BF%E7%94%A8/" data-id="ckps0md6j000btgtsgicaaegs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-分布式系统原理与范型chapter2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter2/" class="article-date">
+  <time datetime="2021-01-21T13:29:54.000Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter2/">分布式系统原理与范型chapter2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter2/" data-id="ckps0md74001itgtscxco00le" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-分布式系统原理与范型chapter1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/" class="article-date">
+  <time datetime="2021-01-21T13:29:44.000Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/">分布式系统原理与范型chapter1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分布式的定义"><a href="#分布式的定义" class="headerlink" title="分布式的定义"></a>分布式的定义</h3><p>分布式经典的一种定义是，多台计算机的集合，这个集合对于用户来说是一个单机系统，好比计算机内部结构，对于普通用户来说，计算机就是一个整体，实际上计算机是由不同的硬件组成。</p>
+<p>分布式必须能够让用户方便访问资源，必须隐藏一个资源在一个网络上分布的一个事实，必须是开发的，而且是可扩展的。</p>
+<h3 id="分布式的特性"><a href="#分布式的特性" class="headerlink" title="分布式的特性"></a>分布式的特性</h3><ol>
+<li>透明性<ol>
+<li>分为透明性</li>
+<li>位置透明性</li>
+<li>迁移透明性</li>
+<li>重定位透明性</li>
+<li>赋值透明性</li>
+<li>并发透明性</li>
+<li>故障透明性</li>
+</ol>
+</li>
+<li>可扩展性<ol>
+<li>隐藏通信等待时间</li>
+<li>分布技术</li>
+<li>复制技术</li>
+</ol>
+</li>
+</ol>
+<ol start="3">
+<li>共享性</li>
+<li>开放性<ol>
+<li>互操作性</li>
+<li>可移植性</li>
+</ol>
+</li>
+</ol>
+<h3 id="可扩展性遇到的问题"><a href="#可扩展性遇到的问题" class="headerlink" title="可扩展性遇到的问题"></a>可扩展性遇到的问题</h3><p>当一个系统需要进行扩张的时候，首先要考虑规模上的扩展，在需要支持更多用户货资源的时候，常常受到集中的服务、数据以及算法所造成的限制。<br>比如</p>
+<ol>
+<li>集中式服务</li>
+<li>集中式数据</li>
+<li>集中式算法</li>
+</ol>
+<h3 id="分布式系统的类型"><a href="#分布式系统的类型" class="headerlink" title="分布式系统的类型"></a>分布式系统的类型</h3><ol>
+<li>集群计算系统</li>
+<li>网格计算系统</li>
+</ol>
+<h3 id="分布式信息系统"><a href="#分布式信息系统" class="headerlink" title="分布式信息系统"></a>分布式信息系统</h3><h3 id="ACID-事务处理的属性"><a href="#ACID-事务处理的属性" class="headerlink" title="(ACID)事务处理的属性"></a>(ACID)事务处理的属性</h3><ol>
+<li>原子性</li>
+<li>一致性</li>
+<li>独立性</li>
+<li>持久性</li>
+</ol>
+<h3 id="分散算法"><a href="#分散算法" class="headerlink" title="分散算法"></a>分散算法</h3><p>分散算法和集中式算法不同的特性:</p>
+<ol>
+<li>没有任何计算机拥有关于系统状态的而信息</li>
+<li>计算机只根据本地信息做出决策。</li>
+<li>某台计算机的故障不会让算法崩溃。</li>
+<li>没有这样的假设：存在全局性时钟。</li>
+</ol>
+<h3 id="分布式的目标"><a href="#分布式的目标" class="headerlink" title="分布式的目标"></a>分布式的目标</h3><ol>
+<li>资源共享</li>
+<li><h3 id="分布式系统解决的问题"><a href="#分布式系统解决的问题" class="headerlink" title="分布式系统解决的问题"></a>分布式系统解决的问题</h3></li>
+</ol>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ol>
+<li>中间件在分布式系统中扮演者什么角色？</li>
+<li>分布式中的透明性是什么？</li>
+<li>在分布式系统中，为什么有时候难以隐藏故障以及故障恢复过程？</li>
+</ol>
+<h3 id="中间件的作用"><a href="#中间件的作用" class="headerlink" title="中间件的作用"></a>中间件的作用</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/21/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%8C%83%E5%9E%8Bchapter1/" data-id="ckps0md75001ltgtsbh5yeugn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker部署springboot项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/20/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2021-01-20T01:24:33.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/20/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/">docker部署springboot项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为我用的是IDEA的插件完成部署，不过大概步骤是可以借鉴的。</p>
+<p>首先在IDEA中安装docker插件:方式为：File ——&gt; Settings ——&gt; Plugins，安装后重启IDE</p>
+<p>第二步，登录服务器，修改docker文件配置，前提是已经安装好了docker。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service</span><br></pre></td></tr></table></figure>
+<p>找到ExecStart，在末尾加上-H tcp://0.0.0.0:2375，表示打开2375端口，并且支持远程连接docker。</p>
+<p>修改完文件之后，需要重新加载配置：</p>
+<ul>
+<li>systemctl daemon-reload</li>
+<li>systemctl restart docker.service</li>
+</ul>
+<p>IDEA中配置docker主机，在file ——&gt; Settings ——&gt; Docker<br>配置tcp连接，tcp://服务器ip:2375。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/20/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/" data-id="ckps0md6m000htgts6m1x1eud" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库实现之前端篇-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/" class="article-date">
+  <time datetime="2021-01-15T08:27:29.000Z" itemprop="datePublished">2021-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/">数据库实现之前端篇(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>之前刷知乎，发现很多大神在大学都写过编译器和操作系统内核和其他好玩的，去年就有一个想写数据库的项目，后来到了新学校，节奏给带偏了，之前是模仿pingcap的TIDB，后来模仿到一半，就去做了实验室的项目，然后准备期末考试，现在又重新捡起来了。。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>根据粗浅的了解，一个最基础版本的内存数据库是，一个索引和SQL解析器就好了，所以寒假打算立个flag，先把SQL解析器写出来。。 正好提前为下学期的编译原理做准备。</p>
+<h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>词法分析主要把输入转换为一个个token，其中token中包含关键字和非关键字，比如 create table tableName，<br>通过分析之后，会得到3个token，这里的token是create,table和tableName，create和table属于关键字，tableName属于非关键字。</p>
+<p>关于语法分析这一块可以使用Flex来生成，</p>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>语法分析是生成语法树的过程，是整个解析过程中最复杂的部分，不过这一块也有语法分析器，比如Antlr。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E7%AB%AF%E7%AF%87-1/" data-id="ckps0md7g002ctgts5nkphy6m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2021的flags" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/12/31/2021%E7%9A%84flags/" class="article-date">
@@ -118,7 +512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/31/2021%E7%9A%84flags/" data-id="ckjfhiop40000t4ts1zcv4ns2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/31/2021%E7%9A%84flags/" data-id="ckps0md680000tgtsfmis9btf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
@@ -159,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/26/%E9%A2%98%E6%B5%B7%E6%88%98%E6%9C%AF%E4%B8%8E%E5%88%B7%E9%A2%98/" data-id="ckj5rcf5v0000cgts8xngbqko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/26/%E9%A2%98%E6%B5%B7%E6%88%98%E6%9C%AF%E4%B8%8E%E5%88%B7%E9%A2%98/" data-id="ckps0md7v003etgts2m29eygp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
@@ -201,338 +595,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/" data-id="ckj53gtl50000jktseww97y7z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/26/%E6%88%91%E7%9A%842020%E5%B9%B4/" data-id="ckps0md7a001ytgts1nzvakvl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据库第四章复习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/" class="article-date">
-  <time datetime="2020-12-21T12:43:51.000Z" itemprop="datePublished">2020-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/">数据库第四章复习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="介绍键"><a href="#介绍键" class="headerlink" title="介绍键"></a>介绍键</h3><ol>
-<li>超键</li>
-<li>主键</li>
-<li>外键</li>
-<li>候选键</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%A4%8D%E4%B9%A0/" data-id="ckj53gtl80001jkts29y1hv0x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-正确的抄代码方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/" class="article-date">
-  <time datetime="2020-12-12T12:21:51.000Z" itemprop="datePublished">2020-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/">正确的抄代码方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“抄代码”这件事情已经变成了学习编程的一种方式，抄代码也分很多种，一种是属于无脑抄，直接Google百度一顿搜，然后找到方法，就开始抄了，这个阶段属于搬运工，所以我做了快三年的搬运工，这种方式属于很急的解决问题，比如说，实现一个登录注册，只有1-2天时间，对于我来说，只想快速实现，然后不管它，这个阶段缺少一个思考的过程。</p>
-<p>而正确有效的抄代码姿势，应该是先想好需求，然后去查找解决方案，在确定解决方案后，去思考这个是怎么实现的，中途可以debug，去跑一跑代码，弄清楚自己为什么实现不了，而别人实现了。</p>
-<p>这是最近抄搜索引擎发现的问题，只会无脑一顿抄，然后运行看效果，也没弄清楚。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/12/%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%84%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F/" data-id="ckilohrfm0000x8tsgbhg41bn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue创建typescript项目" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/" class="article-date">
-  <time datetime="2020-12-02T14:31:45.000Z" itemprop="datePublished">2020-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/">vue创建typescript项目</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>根据官方步骤来先安装vue-cli3脚手架，可以根据之前的文章来看是如何安装的，安装成功之后，在命令行中，<br>输入vue create project-name(项目名)，接着会显示vue-cli的版本号和一些选项，因为是要安装typescript的项目，所以选择 manually select features，按下enter进入后，选中typescript和一些常用常见，通过方向键+空格。</p>
-<p>选中之后，会让选中vue.js的版本，这里选中默认的2.x，选中之后，到了询问是否使用 class风格的组件语法，为了方便使用typescript，就选择Y。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/02/vue%E5%88%9B%E5%BB%BAtypescript%E9%A1%B9%E7%9B%AE/" data-id="ckib6pogf0001p4tsc5w3gpfk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据库中视图的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-12-02T01:24:44.000Z" itemprop="datePublished">2020-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">数据库中视图的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="视图原理"><a href="#视图原理" class="headerlink" title="视图原理"></a>视图原理</h3><p>视图属于一种虚表，通过一张或多张基表根据查询语句而产生的结果组成，因为视图是虚表的原因，所以在存储时，只会存储视图定义，而没有存储对应的数据，视图的语法如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [ <span class="keyword">OR</span> <span class="keyword">ALTER</span> ] <span class="keyword">VIEW</span> [ schema_name . ] view_name [ (<span class="keyword">column</span> [ ,...n ] ) ]</span><br><span class="line">[ <span class="keyword">WITH</span> &lt;view_attribute&gt; [ ,...n ] ]</span><br><span class="line"><span class="keyword">AS</span> select_statement</span><br><span class="line">[ <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">OPTION</span> ]</span><br><span class="line">[ ; ]  </span><br><span class="line">  </span><br><span class="line">&lt;view_attribute&gt; ::=</span><br><span class="line">&#123;  </span><br><span class="line">    [ ENCRYPTION ]  </span><br><span class="line">    [ SCHEMABINDING ]  </span><br><span class="line">    [ VIEW_METADATA ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>创建表结构和例子</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--- 创建表结构</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> supplier(</span><br><span class="line">    supplierID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    supplierName <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    supplierAddress <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S3&#x27;</span>,<span class="string">&#x27;振华电子厂&#x27;</span>,<span class="string">&#x27;西安&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S4&#x27;</span>,<span class="string">&#x27;华通电子公司&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S6&#x27;</span>,<span class="string">&#x27;607厂&#x27;</span>,<span class="string">&#x27;郑州&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> supplier(supplierID,supplierName,supplierAddress) <span class="keyword">values</span>(<span class="string">&#x27;S7&#x27;</span>,<span class="string">&#x27;振华电子厂&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span> (<span class="keyword">DISTINCT</span> supplier.supplierAddress) <span class="keyword">FROM</span> dbo.supplier <span class="comment">--第一题-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">store</span>(</span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeEID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>, <span class="comment">--职工编号</span></span><br><span class="line">    storeSalary <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E1&#x27;</span>,<span class="number">1220</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E3&#x27;</span>,<span class="number">1210</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E4&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;E6&#x27;</span>,<span class="number">1230</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">store</span>(storeID,storeEID,storeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E7&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(store.storeSalary)  <span class="keyword">FROM</span> dbo.store <span class="comment">--第二题-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employee(</span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    employeeEID <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>, <span class="comment">--职工编号</span></span><br><span class="line">    employeeSalary <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SHstore(</span><br><span class="line"></span><br><span class="line">    storeID <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeCITY <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    storeArea <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">--仓库</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>,<span class="number">370</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>,<span class="number">500</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;广州&#x27;</span>,<span class="number">200</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dbo.SHstore(storeID,storeCITY,storeArea) <span class="keyword">values</span>(<span class="string">&#x27;WH4&#x27;</span>,<span class="string">&#x27;武汉&#x27;</span>,<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--职工</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E1&#x27;</span>,<span class="number">1220</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E3&#x27;</span>,<span class="number">1210</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH2&#x27;</span>,<span class="string">&#x27;E4&#x27;</span>,<span class="number">1250</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH3&#x27;</span>,<span class="string">&#x27;E6&#x27;</span>,<span class="number">1230</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> employee(storeID,employeeEID,employeeSalary)<span class="keyword">values</span>(<span class="string">&#x27;WH1&#x27;</span>,<span class="string">&#x27;E7&#x27;</span>,<span class="number">1250</span>)</span><br></pre></td></tr></table></figure>
-
-<p>创建视图，视图名不能和表名一致，并且视图名唯一。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> employeeView <span class="keyword">AS</span> <span class="keyword">select</span> storeID,employeeEID <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<p>如果是通过查询一张基表结果组成的视图，那么可以对它进行insert,update,delete，但是如果是多基表就不可以进行insert和delete，因为修改会影响多个基表。</p>
-<h3 id="视图支持的操作"><a href="#视图支持的操作" class="headerlink" title="视图支持的操作"></a>视图支持的操作</h3><p>如果是单基表查询的视图，支持insert/update/delete，而多基表的情况下，只支持update。</p>
-<h3 id="视图的优点"><a href="#视图的优点" class="headerlink" title="视图的优点"></a>视图的优点</h3><ol>
-<li>简单</li>
-<li>安全</li>
-<li>数据独立</li>
-</ol>
-<p>使用视图的大部分情况下是为了保障数据安全性，提高查询效率。</p>
-<h3 id="视图的缺点"><a href="#视图的缺点" class="headerlink" title="视图的缺点"></a>视图的缺点</h3><ol>
-<li>性能较差</li>
-<li>修改受到限制</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckib6pogn0003p4tsdhrgh5ak" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-触发器和存储过程的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-11-30T15:23:55.000Z" itemprop="datePublished">2020-11-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/">触发器和存储过程的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><h3 id="触发器介绍"><a href="#触发器介绍" class="headerlink" title="触发器介绍"></a>触发器介绍</h3><p>触发器是一条语句，当对数据库中数据进行操作的时候，触发器会自动被系统执行，因为触发器是作为强制运行的特定动作的程序，所以又被称为DML触发器，想要使用触发器必须满足两个要求:</p>
-<ol>
-<li>指明什么条件下执行触发器，它被分解维一个引起触发器被检测的事件和一个触发器执行必须满足的条件。</li>
-<li>指令触发器执行的动作(update/insert/delete等等)</li>
-</ol>
-<p>触发器可以被设置为有效或者无效，默认情况下是有效的，但是可以通过alter tiger tiger_name disable来修改，使触发器变为无效。</p>
-<p>触发器可以对表、事件或者激活事件的组合指定多个触发器，当对特定的表、事件或激活时间存在多个触发器的时候，激活触发器的顺序是和创建顺序一致，所以，最新创建触发器的就是最后激活触发器的。</p>
-<h3 id="触发器的好处"><a href="#触发器的好处" class="headerlink" title="触发器的好处"></a>触发器的好处</h3><h3 id="触发器的坏处"><a href="#触发器的坏处" class="headerlink" title="触发器的坏处"></a>触发器的坏处</h3><h3 id="触发器类型"><a href="#触发器类型" class="headerlink" title="触发器类型"></a>触发器类型</h3><ol>
-<li>Row-level tiger</li>
-<li>Column-level tiger</li>
-<li>For each row type</li>
-<li>For each row type</li>
-</ol>
-<h3 id="什么时候使用触发器"><a href="#什么时候使用触发器" class="headerlink" title="什么时候使用触发器"></a>什么时候使用触发器</h3><h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>存储过程数据库存储复杂的程序，方便外部程序调用额数据库对象，可以视为数据库的一种函数或者子函数。。</p>
-<h3 id="使用存储过程的好处"><a href="#使用存储过程的好处" class="headerlink" title="使用存储过程的好处:"></a>使用存储过程的好处:</h3><ol>
-<li>存储过程可以封装，并隐藏复杂的商业逻辑。</li>
-<li>存储过程可以返回值，并且可以接受参数。</li>
-</ol>
-<h3 id="使用触发器的坏处"><a href="#使用触发器的坏处" class="headerlink" title="使用触发器的坏处:"></a>使用触发器的坏处:</h3><h3 id="触发器语法"><a href="#触发器语法" class="headerlink" title="触发器语法"></a>触发器语法</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/11/30/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckib6pogo0004p4ts1j6f5e71" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue-cli3安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2020-11-30T14:58:27.000Z" itemprop="datePublished">2020-11-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/">vue-cli3安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为软工和python大作业的原因，所以就来水一篇关于vue搭建，想使用typescript作为前端的开发语言，但是需要使用vue3，按照官方的流程安装了一遍vue，不晓得为什么默认的是2.9.6，就很蛋疼，所以就有了这篇关于vue-cli3的文章。</p>
-<p>你可以输入vue –version来查看，vue-cli的版本，packages.json里是vue版本。</p>
-<p>这里首先卸载vue-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g vue-cli</span><br></pre></td></tr></table></figure>
-
-<p>接着输入下面命令，整个过程一定要网好，要不然会安装失败…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue&#x2F;cli</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/11/30/vue-cli3%E5%AE%89%E8%A3%85/" data-id="ckib6pogb0000p4ts7lg63p9y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java多线程编程实战指南chapter1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/24/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97chapter1/" class="article-date">
-  <time datetime="2020-11-24T06:19:19.000Z" itemprop="datePublished">2020-11-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/24/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97chapter1/">Java多线程编程实战指南chapter1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h3><p>多线程编程是以线程为基本抽象单位的一种编程范式，Java平台中一个线程就是一个对象，对象的创建离不开内存空间的分配，Java虚拟机会为每个线程分配调用栈所需的空间。</p>
-<h3 id="多线程编程应用场景"><a href="#多线程编程应用场景" class="headerlink" title="多线程编程应用场景"></a>多线程编程应用场景</h3><h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><h3 id="执行线程"><a href="#执行线程" class="headerlink" title="执行线程"></a>执行线程</h3><h3 id="当前线程"><a href="#当前线程" class="headerlink" title="当前线程"></a>当前线程</h3><h3 id="用户线程"><a href="#用户线程" class="headerlink" title="用户线程"></a>用户线程</h3><h3 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h3><h3 id="线程属性"><a href="#线程属性" class="headerlink" title="线程属性"></a>线程属性</h3><ol>
-<li>编号</li>
-<li>名称</li>
-<li>线程类别</li>
-<li>优先级</li>
-</ol>
-<h3 id="线程之间的关系"><a href="#线程之间的关系" class="headerlink" title="线程之间的关系"></a>线程之间的关系</h3><h3 id="多线程编程的优势和风险"><a href="#多线程编程的优势和风险" class="headerlink" title="多线程编程的优势和风险"></a>多线程编程的优势和风险</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/11/24/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97chapter1/" data-id="ckhwtbp800003lots23l1cpdl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
 
     </footer>
   </div>
@@ -545,7 +611,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -559,7 +625,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
     </div>
   </div>
 
@@ -569,7 +635,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">docker基础</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 16px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 14px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 12px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 18px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px;">生活</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">docker基础</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 16px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 14px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 18px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px;">生活</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 12px;">编译原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
     </div>
   </div>
 
@@ -578,7 +644,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -591,23 +657,23 @@
       <ul>
         
           <li>
-            <a href="/2021/03/28/%E4%B8%80-%E5%BA%8F%E8%A8%80-SQL%E7%BC%96%E8%AF%91%E5%99%A8/">(一)序言-SQL编译器</a>
+            <a href="/2021/06/11/golang%E9%85%8D%E7%BD%AE%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85/">golang配置第三方包</a>
           </li>
         
           <li>
-            <a href="/2021/03/18/Gcc%E7%94%9F%E6%88%90%E7%9A%84%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E5%AF%B9%E6%AF%94LLVM/">Gcc生成的汇编代码对比LLVM</a>
+            <a href="/2021/06/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">调度算法的实现</a>
           </li>
         
           <li>
-            <a href="/2021/02/03/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">雪花算法实现</a>
+            <a href="/2021/06/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8folk/">操作系统之系统调用folk</a>
           </li>
         
           <li>
-            <a href="/2021/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BD%93%E7%9F%BF%E6%9C%BA%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/">记录一次服务器被当矿机解决方法</a>
+            <a href="/2021/05/04/first%E9%9B%86%E5%92%8Cfollow%E9%9B%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">first集和follow集算法实现</a>
           </li>
         
           <li>
-            <a href="/2021/01/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85https%E8%AF%81%E4%B9%A6/">服务器安装https证书</a>
+            <a href="/2021/04/11/%E5%AF%B9cookie%E7%9A%84%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/">对cookie的简单了解</a>
           </li>
         
       </ul>

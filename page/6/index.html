@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Cola</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Cola">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:site_name" content="Cola">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Cola" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Cola</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-设计模式-抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2020-08-23T09:33:31.000Z" itemprop="datePublished">2020-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-抽象工厂模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="抽象工厂模式-Abstract-factory"><a href="#抽象工厂模式-Abstract-factory" class="headerlink" title="抽象工厂模式(Abstract-factory)"></a>抽象工厂模式(Abstract-factory)</h2><p><img src="https://alleniverson.gitbooks.io/design-pattern/content/assets/designpattern15.gif" alt="img"></p>
+<p><img src="https://refactoringguru.cn/images/patterns/diagrams/abstract-factory/example.png" alt="抽象工厂模式示例的类图"></p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>假设你正在经营一家电器商场，电器商场里面有各种各样的问题，用代码类来表示的话：</p>
+<ul>
+<li>一系列相关的产品，比如冰箱，洗衣机，电视等。</li>
+<li>系列不同的变体和品牌，比如海尔冰箱，索尼电视等</li>
+</ul>
+<p>你需要让每件电器单独生成对象，这样才能让风格保持一致，如果顾客买来发现风格不一样，可能就会不满意，另外也不希望添加新产品或者新的品牌的时候，修改现有代码，电器供应商如果对产品更新速度很快的话，你不会像每次更新都去修改关键代码。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>首先，抽象工厂模式建议为电器商场中所有的产品都声明接口，比如冰箱，洗衣机，电视等等，接着所有产品都继承这些接口，比如冰箱都实现冰箱接口等等。</p>
+<p>接着声明抽象工厂，包括系列中所有产品构造方法的接口，比如创建电视createTv等等，这些方法必须返回抽象产品类型，每个具体工厂类对应一个特定的产品变体，对于系列产品的每个变体，都基于抽象工厂接口创建不同的工厂类，每个工厂类只能返回特定的产品，比如索尼品牌的电器，只能创建索尼电视，索尼冰箱，索尼洗衣机等等。</p>
+<p>客户端代码可以通过相应的抽象接口来调用工厂和产品类，不需要改动实际客户端代码，就可以传递给客户端的工厂类，也能够修改客户端代码来接收产品变体，客户端不需要了解所调用工厂的具体类信息。</p>
+<h3 id="抽象工厂结构"><a href="#抽象工厂结构" class="headerlink" title="抽象工厂结构"></a>抽象工厂结构</h3><p><img src="https://refactoringguru.cn/images/patterns/diagrams/abstract-factory/structure-indexed.png" alt="抽象工厂设计模式"></p>
+<ol>
+<li>抽象产品：为构成系列产品的一组不同但是相关的产品声明接口</li>
+<li>具体产品：是抽象产品的多种不同类型实现，所有变体都必须实现相应的抽象产品。</li>
+<li>抽象工厂：接口声明一组创建各种抽象产品的方法。</li>
+<li>具体工厂：实现抽象工厂的构建方法，每个具体工厂对应特定产品变体，并且仅创建这种产品的而变体。</li>
+</ol>
+<h3 id="抽象工厂模式的优缺点"><a href="#抽象工厂模式的优缺点" class="headerlink" title="抽象工厂模式的优缺点"></a>抽象工厂模式的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>可以确保统一工厂生成的产品相互匹配</li>
+<li>可以避免客户端和具体产品代码的耦合</li>
+<li>单一职责原则，可以将产品生成代码抽取到同一位置，让代码更加容易维护。</li>
+<li>开闭原则，向应用程序中引入新的产品变体时，不需要改变客户端代码</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>因为采用该模式需要引入更多的接口和类，所以代码会更加复杂。</p>
+<h3 id="抽象工厂的应用场景"><a href="#抽象工厂的应用场景" class="headerlink" title="抽象工厂的应用场景"></a>抽象工厂的应用场景</h3><p>如果代码需要和多个不同系列的相关产品交互，但是因为没办法提前获取相关信息，或者处于对未来扩张性的考虑，不希望代码基于产品类进行构造，所以在这种情况下，就可以使用抽象工厂。</p>
+<p>抽象工厂提供了一个接口，可以创建每个系列产品的对象，只需要代码通过这个结构创建对象，那么就不会生成和应用程序已经生成的产品类型不一样的产品。</p>
+<p>假设有一个基于一组抽象方法的类，并且主要功能还变得不明确，就可以考虑使用抽象工厂模式，在设计良好的程序当中，每个类仅仅复制一件事，如果一个类需要和多种类型产品交互，就可以考虑工厂方法抽取到独立的工厂类或者具备完整功能的抽象工厂类中。</p>
+<h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h2><p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/abstract-factory">https://refactoringguru.cn/design-patterns/abstract-factory</a></p>
+<p><a target="_blank" rel="noopener" href="https://alleniverson.gitbooks.io/design-pattern/content/design-pattern/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">https://alleniverson.gitbooks.io/design-pattern/content/design-pattern/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" data-id="ckps0md7r0031tgts5sb958jz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java编程思想笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-08-18T09:18:59.000Z" itemprop="datePublished">2020-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/">java编程思想笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="chapter5-初始化与清理"><a href="#chapter5-初始化与清理" class="headerlink" title="chapter5-初始化与清理"></a>chapter5-初始化与清理</h2><h3 id="构造器概念"><a href="#构造器概念" class="headerlink" title="构造器概念"></a>构造器概念</h3><p>在创建对象的时候被自动调用的特殊方法，Java额外提供了垃圾回收器，对于不再使用的内存资源，垃圾回收器能自动将其释放。</p>
+<p>因为构造器调用是编译器的问题，必须让编译器知道应该调用什么方法，所以构造器的名字和类名一致，每个类都一个构造器，如果没有显式构造器的话，编译器会自动生成一个默认的构造方法，没什么任何参数和执行语句。</p>
+<p>构造器是一种特别的方法，没有返回值，但是和void不一样，void本身是不会自动返回什么，但是可以选择让它返回别的东西，而构造器就不行。</p>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>方法重载可以让同一个名字的方法不起冲突，而且方法重载的返回值类型通常是相同的，但是要参数列表不同才可以使用。</p>
+<p>当方法重载里面的参数列表接收到的实参小于形参的话，实参就会提升，如果大于方法重载的形参就会转换类型。</p>
+<h2 id="chapter6-访问权限控制"><a href="#chapter6-访问权限控制" class="headerlink" title="chapter6-访问权限控制"></a>chapter6-访问权限控制</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/18/java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E7%AC%94%E8%AE%B0/" data-id="ckps0md6t000utgts1zunbsk1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/17/docker%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-08-17T06:13:40.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/docker%E5%85%A5%E9%97%A8/">docker入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="docker简介"><a href="#docker简介" class="headerlink" title="docker简介"></a>docker简介</h1><h1 id="docker和虚拟机的区别"><a href="#docker和虚拟机的区别" class="headerlink" title="docker和虚拟机的区别"></a>docker和虚拟机的区别</h1><h1 id="docker三大组件"><a href="#docker三大组件" class="headerlink" title="docker三大组件"></a>docker三大组件</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/17/docker%E5%85%A5%E9%97%A8/" data-id="ckps0md6n000jtgts7skfbyb4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo发布文章" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="article-date">
+  <time datetime="2020-08-13T05:16:08.000Z" itemprop="datePublished">2020-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">hexo发布文章</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><p>使用命令行进入 source/_post/文件中，使用hexo new”文章名”，接着会自动生成一个.md文件，就可以在里面编写文章了。</p>
+<h2 id="发布文件"><a href="#发布文件" class="headerlink" title="发布文件"></a>发布文件</h2><p>先在本地预览一下，然后打开看下127.0.0.1:4000，如果没有问题就可以发布了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>发布命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/13/hexo%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" data-id="ckps0md6s000stgts6mu42y5s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-win10家庭版安装docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" class="article-date">
+  <time datetime="2020-08-13T05:15:16.000Z" itemprop="datePublished">2020-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/">win10家庭版安装docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><p>因为docker在Windows下只有专业版才能安装 docker desktop for windows，其他版本的需要装virtualbox然后装docker，不过现在新的方法可以安装了。</p>
+<h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在桌面新建一个txt文件，把下面代码复制进入，然后另存为cmd文件，最后用管理员模式运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pushd &quot;%~dp0&quot;</span><br><span class="line"></span><br><span class="line">dir &#x2F;b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt</span><br><span class="line"></span><br><span class="line">for &#x2F;f %%i in (&#39;findstr &#x2F;i . hyper-v.txt 2^&gt;nul&#39;) do dism &#x2F;online &#x2F;norestart &#x2F;add-package:&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span><br><span class="line"></span><br><span class="line">del hyper-v.txt</span><br><span class="line"></span><br><span class="line">Dism &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Hyper-V-All &#x2F;LimitAccess &#x2F;ALL</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这也可以启动hyper，可以到控制面板-&gt;功能里面看看有没有开启，家庭版如果没有运行上面的命令是没有hyper选项的。</p>
+<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>这里需要修改注册表绕过安装检查，伪装成虚拟机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&quot; &#x2F;v EditionId &#x2F;T REG_EXPAND_SZ &#x2F;d Professional &#x2F;F</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>这里是最后一步了，如果没有这一步的话，虚拟机会出现问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcdedit &#x2F;set hypervisorlaunchtype Auto</span><br></pre></td></tr></table></figure>
+
+<p>重启计算机，最后就可以安装了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/13/win10%E5%AE%B6%E5%BA%AD%E7%89%88%E5%AE%89%E8%A3%85docker/" data-id="ckps0md6x0016tgts8a8w3rzl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java注解-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" class="article-date">
+  <time datetime="2020-08-12T02:16:22.000Z" itemprop="datePublished">2020-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/">java注解(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解也被称为元数据，为我们在代码中添加信息提供了一种形式化方法，可以让我们在之后某个时刻非常方便的使用这些数据，注解的参数类似于一个无参数方法，可以使用default设定一个默认值。</p>
+<p>Java中的类，方法，变量，参数和包等都可以被注解，注解可以通过反射来得到注解内容，在编译器生成类文件的时候，注解可以被嵌入到字节码中，Java虚拟机可以保留注解内容，可以在运行时的时候得到标注内容，也支持自定义Java注解。</p>
+<p>使用注解可以把元数据保存在java源代码中，注解的好处可以写出更加干净易读的代码以及编译期的类型检查。</p>
+<h3 id="元数据-Data-that-describes-other-data"><a href="#元数据-Data-that-describes-other-data" class="headerlink" title="元数据(Data that describes other data)"></a>元数据(Data that describes other data)</h3><p>元数据是描述数据的数据，有三种不同类型的元数据，分别是如下三种</p>
+<ol>
+<li>记叙性元数据：用于发现与辨别意义的资源，可以包括比如标题，摘要，作者和关键字等元素。</li>
+<li>结构性元数据：有关于数据容器的元数据，指示如何整理其中复合的对象，例如页面按照什么排序方法组成章节。</li>
+<li>管理性元数据：用于管理资源的信息，例如数据产生的时间和方式，文件种类和其他技术信息，以及谁有权限访问它。</li>
+</ol>
+<p>举个栗子，比如一本书，会列出作者，出版社等等，这里的作业，书名，出版社就是元数据，因为它们是用来描述具体数据/信息的数据/信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">作者:xxx</span><br><span class="line">书名:xxx</span><br><span class="line">出版社:xxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h3><p>java一共有7个内置的注解，3个在java.lang中，剩下4个在java.lang.annotation中，作用在代码中的注解</p>
+<ul>
+<li>@Override：表示当前的方法定义将覆盖超类中的方法，如果拼写错误，或者引用的接口没有这个方法，就会报编译错误。</li>
+<li>@Deprecated：如果使用了这个注解，编译器会发出编译警告。</li>
+<li>@SuppressWarnings：关闭不当的编译器警告。</li>
+</ul>
+<p>元注解，作用在其他注解的注解：</p>
+<ul>
+<li>@Retention：用来注解在那个级别可用。<ul>
+<li>编译期(RetentionPolicy,SOURCE)：注解将被编译器丢弃。</li>
+<li>class文件(RetentionPolicy.CLASS)：注解在class文件中可用，但会被vm抛弃。</li>
+<li>运行期(RetentionPolicy.RUNTIME)：VM将在运行期也保留注解，所以可以通过反射机制来获取注解信息。</li>
+</ul>
+</li>
+<li>@Documented：将注解包含在Javadoc里面</li>
+<li>@Target：用来定义你的注解会应用在什么地方。</li>
+<li>@Inherited：允许子类继承父类的注解。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/12/java%E6%B3%A8%E8%A7%A3-1/" data-id="ckps0md6q000qtgts25lifz0t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/hello-world/" class="article-date">
+  <time datetime="2020-08-07T06:46:29.073Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckps0md6p000ptgts2xc26oej" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker%E5%9F%BA%E7%A1%80/" rel="tag">docker基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E6%95%99%E7%A8%8B/" rel="tag">hexo教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" rel="tag">公开课学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" rel="tag">前端大杂烩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" rel="tag">学习经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" rel="tag">数据库实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" rel="tag">数据结构与算法技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" rel="tag">计算机学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">Java基础</a> <a href="/tags/docker%E5%9F%BA%E7%A1%80/" style="font-size: 14px;">docker基础</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo%E6%95%99%E7%A8%8B/" style="font-size: 10px;">hexo教程</a> <a href="/tags/%E5%85%AC%E5%BC%80%E8%AF%BE%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">公开课学习</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%9D%82%E7%83%A9/" style="font-size: 12px;">前端大杂烩</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 16px;">后端</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">学习经验</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 14px;">开发环境</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 18px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">数据库实现</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">数据结构与算法技巧</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px;">生活</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 12px;">编译原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">计算机学习</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/11/golang%E9%85%8D%E7%BD%AE%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85/">golang配置第三方包</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">调度算法的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8folk/">操作系统之系统调用folk</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/04/first%E9%9B%86%E5%92%8Cfollow%E9%9B%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">first集和follow集算法实现</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/11/%E5%AF%B9cookie%E7%9A%84%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/">对cookie的简单了解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
